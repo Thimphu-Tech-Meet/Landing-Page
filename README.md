@@ -30,6 +30,8 @@ Write your idea here using normal markdown.
 
 Click **Commit changes…**, then accept GitHub's offer to **create a pull request**. Done — a maintainer will review and merge it, and the site redeploys automatically with your post live.
 
+> **Branch naming:** if you create a branch for your PR, name it `feature/<feature-name>` — e.g. `feature/my-great-idea`.
+
 ## How you get credited
 
 - The `author` you put in the frontmatter is displayed on your post.
