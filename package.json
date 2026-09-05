@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=18.18.0"
+    "node": "22.x"
   },
   "description": "Community-driven, file-based blog. No databases, no CMS, no API keys — just markdown and pull requests.",
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "next": "^15.1.6",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
