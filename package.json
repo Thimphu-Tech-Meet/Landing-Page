@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=18.18.0"
+    "node": "22.x"
   },
   "description": "Community-driven, file-based blog. No databases, no CMS, no API keys — just markdown and pull requests.",
   "scripts": {
