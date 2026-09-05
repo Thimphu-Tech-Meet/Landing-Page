@@ -1,0 +1,32 @@
+name: Update contributors
+
+# Rebuilds the visual contributor grid in CONTRIBUTORS.md every time a
+# pull request is merged into main (or main is pushed to directly).
+# Uses a free community action — no paid automation, no extra secrets.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-contributors:
+    # Only run for merged PRs (or direct pushes), not closed-without-merge.
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update contributors list in CONTRIBUTORS.md
+        uses: akhilmhdh/contributors-readme-action@v2.3.10
+        with:
+          file_path: CONTRIBUTORS.md
+          commit_message: "docs: update contributors grid [skip ci]"
+          committer_username: "github-actions[bot]"
+          committer_email: "github-actions[bot]@users.noreply.github.com"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
