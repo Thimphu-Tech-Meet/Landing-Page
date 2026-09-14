@@ -17,6 +17,13 @@
                     <sub><b>Kelden Dradul Dorji</b></sub>
                 </a>
             </td>
+            <td align="center">
+                <a href="https://github.com/MasterScientist22">
+                    <img src="https://avatars.githubusercontent.com/u/116861179?v=4" width="100;" alt="MasterScientist22"/>
+                    <br />
+                    <sub><b>Tashi</b></sub>
+                </a>
+            </td>
 		</tr>
 	<tbody>
 </table>
