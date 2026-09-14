@@ -1,22 +1,27 @@
 name: Update contributors
 
-# Rebuilds the visual contributor grid in CONTRIBUTORS.md every time a
-# pull request is merged into main (or main is pushed to directly).
+# Rebuilds the visual contributor grid in CONTRIBUTORS.md every time main
+# changes (a merged PR always produces a push to main, so a separate
+# pull_request trigger is not needed and would only double the runs).
 # Uses a free community action — no paid automation, no extra secrets.
+#
+# main is a protected branch (ruleset "Maintainer-review-require"), so the
+# action cannot commit to it directly. Instead it pushes the updated grid to
+# a `contributors-readme-action-*` branch and opens a PR for a maintainer to
+# approve. That needs two things:
+#   1. `pull-requests: write` below.
+#   2. Repo Settings → Actions → General → Workflow permissions →
+#      "Allow GitHub Actions to create and approve pull requests" enabled.
 on:
   push:
-    branches: [main]
-  pull_request:
-    types: [closed]
     branches: [main]
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update-contributors:
-    # Only run for merged PRs (or direct pushes), not closed-without-merge.
-    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,5 +33,6 @@ jobs:
           commit_message: "docs: update contributors grid [skip ci]"
           committer_username: "github-actions[bot]"
           committer_email: "github-actions[bot]@users.noreply.github.com"
+          pr_title_on_protected: "docs: update contributors grid"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
