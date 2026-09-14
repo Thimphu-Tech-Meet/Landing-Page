@@ -1,18 +1,29 @@
 # Contributing
 
-Thank you for wanting to share an idea with the community! This site is intentionally simple: **every post is a markdown file**, and **every contribution is a pull request**. No accounts, no databases, no API keys.
+Thank you for wanting to share an idea with the community! This site is intentionally simple: **every post is a markdown file**, and **every contribution is a pull request**. No databases, no API keys.
 
-You do not need to install anything or know how to code. The whole process can be done in your browser on GitHub.
+You only need [Git](https://git-scm.com/downloads) installed and a GitHub account. No coding knowledge is required.
 
-## 1. Fork the repository
+## 1. Clone the repository and create a branch
 
-1. Go to the [repository on GitHub](https://github.com/Thimphu-Tech-Meet/Landing-Page).
-2. Click the **Fork** button (top right). This creates your own copy of the project under your GitHub account.
+1. Clone the repository and move into it:
+   ```bash
+   git clone https://github.com/Thimphu-Tech-Meet/Landing-Page.git
+   cd Landing-Page
+   ```
+2. Make sure you are on the latest `main`, then create a branch for your change:
+   ```bash
+   git checkout main
+   git pull
+   git checkout -b feature/<feature-name>
+   ```
+
+**Branch naming rule:** every branch **must** be named `feature/<feature-name>`, using lowercase words separated by hyphens — for example `feature/my-great-idea`. Pull requests from branches that do not follow this pattern will be asked to rename before review. Never commit directly to `main`.
 
 ## 2. Add your markdown file
 
-1. In **your fork**, open the `content` folder.
-2. Click **Add file → Create new file**.
+1. Open the `content` folder.
+2. Create a new file.
 3. Name your file with lowercase words separated by hyphens, ending in `.md`, for example:
    ```
    content/my-great-idea.md
@@ -47,26 +58,38 @@ Write your idea here using normal markdown.
 - `date` must use the `YYYY-MM-DD` format.
 - `link` is **optional** — include it when your post is about an external resource. You may delete the line otherwise.
 
-**Images:** place image files in the `public/images` folder of your fork and reference them as `/images/your-file.png`. Remote image URLs (`https://…`) also work.
+**Images:** place image files in the `public/images` folder and reference them as `/images/your-file.png`. Remote image URLs (`https://…`) also work.
 
-## 3. Open a pull request
+## 3. Commit and push your branch
 
-1. Scroll to the bottom and click **Commit changes…**, then **Commit changes** again.
-2. GitHub will offer to **create a pull request** — click it, or go to the original repository and click **Pull requests → New pull request → compare across forks**.
-3. Give your PR a short title like `Add post: my-great-idea` and submit.
+```bash
+git add content/my-great-idea.md
+git commit -m "Add post: my-great-idea"
+git push -u origin feature/my-great-idea
+```
 
-That's it! A maintainer will review your post. Once merged:
+If you added images, include them in the `git add` step as well.
+
+## 4. Open a pull request
+
+1. Go to the [repository on GitHub](https://github.com/Thimphu-Tech-Meet/Landing-Page). A **Compare & pull request** banner appears for your pushed branch — click it. (Or go to **Pull requests → New pull request** and select your `feature/…` branch.)
+2. Make sure the base branch is `main`.
+3. Give your PR a short title like `Add post: my-great-idea` and a one-line description, then submit.
+
+## Review and approval
+
+For now, pull requests are reviewed and approved by **Kelden**. Maintainer roles will be assigned to more community members soon. If changes are requested, push more commits to the same branch — the PR updates automatically.
+
+Once merged:
 
 - the site rebuilds automatically with your post live, and
 - your GitHub avatar is added to `CONTRIBUTORS.md` automatically.
 
 ## Running the site locally (optional)
 
-If you'd like to preview your post before submitting:
+If you'd like to preview your post before submitting, run this from inside your cloned `Landing-Page` folder (requires [Node.js](https://nodejs.org)):
 
 ```bash
-git clone https://github.com/<your-username>/Landing-Page.git
-cd Landing-Page
 npm install
 npm run dev
 ```
