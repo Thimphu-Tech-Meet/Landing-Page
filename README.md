@@ -48,8 +48,15 @@ Go to the [repository on GitHub](https://github.com/Thimphu-Tech-Meet/Landing-Pa
 
 ## How you get credited
 
-- The `author` you put in the frontmatter is displayed on your post.
-- Once your PR is merged, your GitHub avatar and username are **added automatically to [CONTRIBUTORS.md](CONTRIBUTORS.md)** by a GitHub Action — nothing to do on your end.
+You get credited in two places, and you don't need to open a separate PR for either.
+
+**1. On your post.** The `author` value in your post's frontmatter is displayed on the post page. Use whatever name you want shown — your real name or your GitHub username.
+
+**2. In [CONTRIBUTORS.md](CONTRIBUTORS.md), automatically.** When your pull request is merged into `main`, a GitHub Action rebuilds the contributor grid in `CONTRIBUTORS.md` and adds your GitHub avatar and username. There is nothing to do on your end. A few details:
+
+- The grid is built from commit authorship, so the email on your commits must be linked to your GitHub account. Check with `git config user.email` and make sure that address is listed under **Settings → Emails** on GitHub — otherwise the commit shows up as an anonymous author and you won't appear.
+- It usually appears within a minute or two of the merge. If you're missing after that, [raise an issue](../../issues/new) and a maintainer will look into it.
+- Please don't edit the grid by hand — the action overwrites it on the next merge.
 
 ## Questions?
 
