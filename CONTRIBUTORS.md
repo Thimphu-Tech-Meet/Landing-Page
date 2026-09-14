@@ -7,4 +7,17 @@
      whenever a pull request is merged. Do not edit it by hand. -->
 
 <!-- readme: contributors -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/compressionmonkey">
+                    <img src="https://avatars.githubusercontent.com/u/17824272?v=4" width="100;" alt="compressionmonkey"/>
+                    <br />
+                    <sub><b>Kelden Dradul Dorji</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: contributors -end -->
