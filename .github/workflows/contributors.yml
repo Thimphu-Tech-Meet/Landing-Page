@@ -24,7 +24,7 @@ jobs:
       - name: Update contributors list in CONTRIBUTORS.md
         uses: akhilmhdh/contributors-readme-action@v2.3.10
         with:
-          file_path: CONTRIBUTORS.md
+          readme_path: CONTRIBUTORS.md
           commit_message: "docs: update contributors grid [skip ci]"
           committer_username: "github-actions[bot]"
           committer_email: "github-actions[bot]@users.noreply.github.com"
