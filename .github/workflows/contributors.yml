@@ -5,20 +5,19 @@ name: Update contributors
 # pull_request trigger is not needed and would only double the runs).
 # Uses a free community action — no paid automation, no extra secrets.
 #
-# main is a protected branch (ruleset "Maintainer-review-require"), so the
-# action cannot commit to it directly. Instead it pushes the updated grid to
-# a `contributors-readme-action-*` branch and opens a PR for a maintainer to
-# approve. That needs two things:
-#   1. `pull-requests: write` below.
-#   2. Repo Settings → Actions → General → Workflow permissions →
-#      "Allow GitHub Actions to create and approve pull requests" enabled.
+# main is protected by the "Maintainer-review-require" ruleset. Rather than
+# open a PR that a human must approve for every contributor change, the
+# GitHub Actions app is listed as a bypass actor on that ruleset, so this
+# workflow's GITHUB_TOKEN may commit the regenerated grid straight to main.
+# auto_detect_branch_protection is therefore turned off; if the bypass is
+# ever removed, flip it back to true and add `pull-requests: write` so the
+# action falls back to opening a PR instead.
 on:
   push:
     branches: [main]
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   update-contributors:
@@ -33,6 +32,6 @@ jobs:
           commit_message: "docs: update contributors grid [skip ci]"
           committer_username: "github-actions[bot]"
           committer_email: "github-actions[bot]@users.noreply.github.com"
-          pr_title_on_protected: "docs: update contributors grid"
+          auto_detect_branch_protection: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
