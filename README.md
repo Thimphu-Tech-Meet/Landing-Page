@@ -28,9 +28,11 @@ Write your idea here using normal markdown.
 
 ### 3. Open a pull request
 
-Click **Commit changes…**, then accept GitHub's offer to **create a pull request**. Done — a maintainer will review and merge it, and the site redeploys automatically with your post live.
+Click **Commit changes…**, choose **Create a new branch for this commit and start a pull request**, and name the branch `feature/<feature-name>` — e.g. `feature/my-great-idea`. Then **create the pull request**. Done — once it is approved and merged, the site redeploys automatically with your post live.
 
-> **Branch naming:** if you create a branch for your PR, name it `feature/<feature-name>` — e.g. `feature/my-great-idea`.
+> **Branch naming:** all pull requests must come from a branch named `feature/<feature-name>`.
+>
+> **Review & approval:** for now, pull requests are reviewed and approved by **Kelden**. Maintainer roles will be assigned to more community members soon.
 
 ## How you get credited
 
