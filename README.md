@@ -64,6 +64,8 @@ You get credited in two places, and you don't need to open a separate PR for eit
 
 For the full details — images, frontmatter rules, ground rules — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
+You can also email any of the maintainers to ask.
+
 ## Running the site locally (optional)
 
 From inside your cloned `Landing-Page` folder:
