@@ -58,7 +58,7 @@ Write your idea here using normal markdown.
 - `title`, `description`, `author`, and `date` are **required**. The build fails if any are missing.
 - `date` must use the `YYYY-MM-DD` format.
 - `link` is **optional** — include it when your post is about an external resource. You may delete the line otherwise.
-- `tags` is **optional** — a short list of labels shown on the post list, e.g. `tags: ["Agents", "Infra"]`.
+- `tags` is **optional** — a short list of labels shown on the post list, e.g. `tags: ["Agents", "Infra"]`. Tag an event write-up (a talk, fireside chat or roundtable) with `"Event"`: those posts are listed on the **Events** page instead of **Ideas**.
 - `github` is **optional** — your GitHub username, e.g. `github: "compressionmonkey"`. When set, your name on the post links to your profile.
 
 **Images:** place image files in the `public/images` folder and reference them as `/images/your-file.png`. Remote image URLs (`https://…`) also work.

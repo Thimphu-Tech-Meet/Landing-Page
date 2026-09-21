@@ -130,3 +130,26 @@ export function getAllPosts(): Post[] {
         new Date(a.frontmatter.date).getTime()
     );
 }
+
+/**
+ * Posts tagged "Event" (any capitalisation) are write-ups of talks and
+ * roundtables rather than ideas. They are listed on /events and kept out
+ * of the Ideas list; the post page itself works the same for both.
+ */
+export const EVENT_TAG = "Event";
+
+export function isEventPost(post: Post): boolean {
+  return (post.frontmatter.tags ?? []).some(
+    (tag) => tag.toLowerCase() === EVENT_TAG.toLowerCase()
+  );
+}
+
+/** Event write-ups, newest first. */
+export function getEventPosts(): Post[] {
+  return getAllPosts().filter(isEventPost);
+}
+
+/** Everything that is not an event write-up, newest first. */
+export function getIdeaPosts(): Post[] {
+  return getAllPosts().filter((post) => !isEventPost(post));
+}
