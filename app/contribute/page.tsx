@@ -61,21 +61,17 @@ content/your-idea.md`}</pre>
           <div className="note">
             <h3>Sending photos?</h3>
             <p>
-              Don&apos;t open a PR. Hand them to an organiser at the meetup or{" "}
-              <a href={site.newIssue} target="_blank" rel="noopener noreferrer">
-                open an issue
-              </a>{" "}
-              with a link; we add them to that month&apos;s meetup file.
+              Don&apos;t open a PR. Hand them to an organiser on Saturday or{" "}
+              <a href={`mailto:${site.email}`}>email them to us</a>; we add
+              them to that week&apos;s meetup file.
             </p>
           </div>
           <div className="note plain">
             <h3>Want to give a talk?</h3>
             <p>
               Five to twenty minutes, any level.{" "}
-              <a href={site.newIssue} target="_blank" rel="noopener noreferrer">
-                Open an issue
-              </a>{" "}
-              with a title and we&apos;ll slot you into the next meetup.
+              <a href={`mailto:${site.email}`}>Email us</a> a title, or just
+              turn up on Saturday and say so; we&apos;ll slot you in.
             </p>
           </div>
         </div>

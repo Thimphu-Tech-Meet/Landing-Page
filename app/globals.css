@@ -120,6 +120,7 @@ h1, h2, h3 {
   font-weight: 800;
 }
 .page-intro { color: var(--ink-2); max-width: 56ch; margin: 0 0 36px; font-size: 19px; }
+.page-intro a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ------------------------------------------------------------------ */
 /* Header                                                             */
@@ -243,6 +244,9 @@ section + section { border-top: 1px solid var(--line-2); }
 }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero p.lede { font-size: 21px; color: var(--ink-2); max-width: 34ch; margin: 22px 0 28px; }
+.hero p.lede a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.next .when a { color: var(--accent); }
+.next .when a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .next {

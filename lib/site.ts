@@ -7,6 +7,15 @@ export const site = {
   contributing:
     "https://github.com/Thimphu-Tech-Meet/Landing-Page/blob/main/CONTRIBUTING.md",
   newIssue: "https://github.com/Thimphu-Tech-Meet/Landing-Page/issues/new",
+  email: "keldendraduldorji@gmail.com",
+} as const;
+
+/** The standing weekly meetup. Shown when no dated meetup is scheduled. */
+export const weekly = {
+  day: "Every Saturday",
+  time: "12:00 – 14:00",
+  place: "Loden Office, Thimphu",
+  map: "https://maps.app.goo.gl/NFcSeF9TZT5trEUL7",
 } as const;
 
 export interface Sponsor {

@@ -14,6 +14,7 @@ export function SiteFooter() {
           <a href={site.newIssue} target="_blank" rel="noopener noreferrer">
             Raise an issue
           </a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
         </div>
       </div>
     </footer>

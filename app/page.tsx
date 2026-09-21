@@ -4,6 +4,7 @@ import { countPhotos, getNextMeetup, getPastMeetups, type Meetup } from "@/lib/m
 import { dateParts, formatDateWithWeekday } from "@/lib/format";
 import { PostList } from "@/components/post-list";
 import { PhotoTile } from "@/components/photo-tile";
+import { site, weekly } from "@/lib/site";
 
 /**
  * Home: hero + next meetup, two doors (Ideas / Meetups), the latest
@@ -23,11 +24,16 @@ export default function HomePage() {
           <div>
             <div className="eyebrow">Thimphu · since 2025</div>
             <h1>
-              People who build things, <em>in the same room</em> once a month.
+              People who build things, <em>in the same room</em> every Saturday.
             </h1>
             <p className="lede">
-              An open meetup for developers, researchers and tinkerers in Bhutan.
-              We share ideas in writing, then argue about them over tea.
+              A casual, open meetup for developers, researchers and tinkerers in
+              Bhutan. Saturdays, 12 to 2 PM, at the{" "}
+              <a href={weekly.map} target="_blank" rel="noopener noreferrer">
+                Loden office
+              </a>{" "}
+              in Thimphu. Just walk in, or{" "}
+              <a href={`mailto:${site.email}`}>email us</a>.
             </p>
             <div className="actions">
               <Link className="btn primary" href="/ideas">
@@ -117,22 +123,29 @@ function NextMeetupCard({ meetup }: { meetup: Meetup | null }) {
     return (
       <aside className="next">
         <div className="eyebrow">Next meetup</div>
-        <h3>Date to be announced</h3>
-        <p>
-          We are lining up the next session. Watch the repository, or put
-          your name down to give a talk and we will build the evening around it.
-        </p>
+        <h3>{weekly.day}</h3>
+        <div className="when">
+          <b>Time</b>
+          <span>{weekly.time}</span>
+          <b>Place</b>
+          <span>
+            <a href={weekly.map} target="_blank" rel="noopener noreferrer">
+              {weekly.place} ↗
+            </a>
+          </span>
+        </div>
         <div className="foot">
-          <span className="mono plain">Thimphu · in person</span>
-          <Link className="btn small" href="/contribute">
-            Propose a talk
-          </Link>
+          <span className="mono plain">Casual · just walk in</span>
+          <a className="btn small" href={`mailto:${site.email}`}>
+            Email us
+          </a>
         </div>
       </aside>
     );
   }
 
-  const { title, date, time, location, going, rsvp } = meetup.frontmatter;
+  const { title, date, time, going, rsvp } = meetup.frontmatter;
+  const location = meetup.frontmatter.location ?? weekly.place;
 
   return (
     <aside className="next">
@@ -141,18 +154,18 @@ function NextMeetupCard({ meetup }: { meetup: Meetup | null }) {
       <div className="when">
         <b>Date</b>
         <span>{formatDateWithWeekday(date)}</span>
-        {time && (
-          <>
-            <b>Time</b>
-            <span>{time}</span>
-          </>
-        )}
-        {location && (
-          <>
-            <b>Place</b>
-            <span>{location}</span>
-          </>
-        )}
+        <b>Time</b>
+        <span>{time ?? weekly.time}</span>
+        <b>Place</b>
+        <span>
+          {location === weekly.place ? (
+            <a href={weekly.map} target="_blank" rel="noopener noreferrer">
+              {location} ↗
+            </a>
+          ) : (
+            location
+          )}
+        </span>
       </div>
       <div className="foot">
         {going ? (
@@ -163,16 +176,16 @@ function NextMeetupCard({ meetup }: { meetup: Meetup | null }) {
             <span className="mono plain">{going} going</span>
           </div>
         ) : (
-          <span className="mono plain">Everyone welcome</span>
+          <span className="mono plain">Casual · just walk in</span>
         )}
         {rsvp ? (
           <a className="btn small" href={rsvp} target="_blank" rel="noopener noreferrer">
             RSVP
           </a>
         ) : (
-          <Link className="btn small" href="/contribute">
-            RSVP
-          </Link>
+          <a className="btn small" href={`mailto:${site.email}`}>
+            Email us
+          </a>
         )}
       </div>
     </aside>

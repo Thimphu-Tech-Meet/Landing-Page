@@ -5,6 +5,7 @@ import { getAllMeetups, type Meetup } from "@/lib/meetups";
 import { dateParts } from "@/lib/format";
 import { PhotoTile } from "@/components/photo-tile";
 import { mdxComponents } from "@/components/mdx-components";
+import { site, weekly } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Meetups",
@@ -23,9 +24,14 @@ export default function MeetupsPage() {
         <div className="eyebrow">Meetups</div>
         <h1 className="page-title">Time together, on record</h1>
         <p className="page-intro">
-          Every session we&apos;ve held, newest first. Photos are added by
-          organisers after each meetup; send yours to an organiser and
-          we&apos;ll include them.
+          We meet every Saturday, 12 to 2 PM, at the{" "}
+          <a href={weekly.map} target="_blank" rel="noopener noreferrer">
+            Loden office
+          </a>{" "}
+          in Thimphu. Below is every session we&apos;ve written up, newest
+          first. Photos are added by organisers afterwards; send yours to{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a> and we&apos;ll
+          include them.
         </p>
 
         {meetups.length === 0 ? (
