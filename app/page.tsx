@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
+import { getIdeaPosts } from "@/lib/posts";
 import { countPhotos, coverPhoto, getNextMeetup, getPastMeetups, type Meetup } from "@/lib/meetups";
 import { dateParts, formatDateWithWeekday } from "@/lib/format";
 import { PostList } from "@/components/post-list";
@@ -15,7 +15,7 @@ const HERO_PHOTO_SIZES = "(max-width: 820px) calc(100vw - 40px), 420px";
  * rendered once at build time from the /content folder.
  */
 export default function HomePage() {
-  const posts = getAllPosts();
+  const posts = getIdeaPosts();
   const past = getPastMeetups();
   const next = getNextMeetup();
   const photoCount = countPhotos(past);

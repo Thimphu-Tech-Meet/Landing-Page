@@ -726,6 +726,22 @@ section + section { border-top: 1px solid var(--line-2); }
 .note a { color: var(--accent); font-family: var(--display); font-weight: 600; }
 .actions-row { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* About: list of event write-ups inside a note. */
+.about-events { list-style: none; margin: 0; padding: 0; }
+.about-events li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.about-events li:last-child { border-bottom: 0; }
+.about-events li a { color: var(--ink); font-family: var(--display); font-weight: 600; }
+.about-events li a:hover { color: var(--accent); }
+.about-events .mono { font-size: 13px; white-space: nowrap; }
+
 /* ------------------------------------------------------------------ */
 /* Sponsors                                                           */
 /* ------------------------------------------------------------------ */
@@ -804,8 +820,10 @@ footer.site .made { font-size: 15px; color: var(--ink-3); }
 
 @media (max-width: 520px) {
   body { font-size: 17px; }
-  nav.main { font-size: 14px; }
-  nav.main a { padding: 7px 9px; }
+  /* Five links no longer fit beside the brand; let the row scroll sideways. */
+  nav.main { font-size: 14px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+  nav.main::-webkit-scrollbar { display: none; }
+  nav.main a { padding: 7px 9px; flex: none; white-space: nowrap; }
   .hero { padding-block: 40px 32px; }
   .hero p.lede { font-size: 19px; }
   .brand .name { display: none; }

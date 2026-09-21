@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getAllPosts, getPostBySlug, isEventPost } from "@/lib/posts";
 import { mdxComponents } from "@/components/mdx-components";
 import { formatDate } from "@/lib/format";
 
@@ -68,7 +68,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   const { title, author, date, link, tags } = post.frontmatter;
-  const eyebrow = tags?.length ? `Idea · ${tags[0]}` : "Idea";
+  // Event write-ups sit under /events; everything else is an idea.
+  const event = isEventPost(post);
+  const kind = event ? "Event" : "Idea";
+  const topic = tags?.find((t) => t.toLowerCase() !== kind.toLowerCase());
+  const eyebrow = topic ? `${kind} · ${topic}` : kind;
+  const backHref = event ? "/events" : "/ideas";
+  const backLabel = event ? "← All events" : "← All ideas";
   const authorUrl = post.authorUrl;
   const handle = authorUrl?.split("/").pop();
 
@@ -84,8 +90,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <section>
       <div className="wrap">
         <article className="article">
-          <Link href="/ideas" className="back">
-            ← All ideas
+          <Link href={backHref} className="back">
+            {backLabel}
           </Link>
 
           <div className="eyebrow">{eyebrow}</div>
@@ -130,7 +136,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p>
                 Member of Thimphu Tech Meet. This post was contributed as a
                 markdown file and reviewed in the open.{" "}
-                <Link href="/ideas">More ideas →</Link>
+                {event ? (
+                  <Link href="/events">More events →</Link>
+                ) : (
+                  <Link href="/ideas">More ideas →</Link>
+                )}
               </p>
             </div>
           </div>

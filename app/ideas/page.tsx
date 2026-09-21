@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
+import { getIdeaPosts } from "@/lib/posts";
 import { PostList } from "@/components/post-list";
 
 export const metadata: Metadata = {
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/ideas" },
 };
 
-/** All posts, newest first. */
+/** All idea posts (event write-ups live on /events), newest first. */
 export default function IdeasPage() {
-  const posts = getAllPosts();
+  const posts = getIdeaPosts();
 
   return (
     <section>
