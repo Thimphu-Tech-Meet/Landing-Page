@@ -64,7 +64,7 @@ export default function RootLayout({
               href="https://keldendev.info/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-neutral-700"
+              className="ml-auto inline-flex items-center gap-2 hover:text-neutral-700"
             >
               <Image
                 src="/kelden-icon.png"
