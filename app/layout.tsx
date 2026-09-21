@@ -50,8 +50,8 @@ export default function RootLayout({
         </main>
 
         <footer className="border-t border-neutral-200">
-          <div className="mx-auto flex max-w-prose flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-6 text-sm text-neutral-500">
-            <span>
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-6 text-sm text-neutral-500">
+            <div>
               Open source and community-built.{" "}
               <a
                 href="https://github.com/Thimphu-Tech-Meet/Landing-Page"
@@ -59,22 +59,24 @@ export default function RootLayout({
               >
                 View on GitHub
               </a>
-            </span>
-            <a
-              href="https://keldendev.info/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-2 hover:text-neutral-700"
-            >
-              <Image
-                src="/kelden-icon.png"
-                alt="Kelden's website icon"
-                width={20}
-                height={20}
-                className="rounded"
-              />
-              <span>Supported by Kelden ❤️</span>
-            </a>
+            </div>
+            <div className="ml-auto">
+              <a
+                href="https://keldendev.info/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:text-neutral-700"
+              >
+                <Image
+                  src="/kelden-icon.png"
+                  alt="Kelden's website icon"
+                  width={20}
+                  height={20}
+                  className="rounded"
+                />
+                <span>Supported by Kelden ❤️</span>
+              </a>
+            </div>
           </div>
         </footer>
         <Analytics />
