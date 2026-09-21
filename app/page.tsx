@@ -30,7 +30,7 @@ export default function HomePage() {
               A casual, open meetup for developers, researchers and tinkerers in
               Bhutan. Saturdays, 12 to 2 PM, at the{" "}
               <a href={weekly.map} target="_blank" rel="noopener noreferrer">
-                Loden office
+                {weekly.place}
               </a>{" "}
               in Thimphu. Just walk in, or{" "}
               <a href={`mailto:${site.email}`}>email us</a>.

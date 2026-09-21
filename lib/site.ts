@@ -14,7 +14,7 @@ export const site = {
 export const weekly = {
   day: "Every Saturday",
   time: "12:00 – 14:00",
-  place: "Loden Office, Thimphu",
+  place: "Loden Office Top Floor Meeting Room",
   map: "https://maps.app.goo.gl/NFcSeF9TZT5trEUL7",
 } as const;
 

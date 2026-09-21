@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description:
-    "A casual weekly meetup for developers, researchers and tinkerers in Bhutan. Every Saturday, 12 to 2 PM, at the Loden office in Thimphu. Ideas are written as markdown and reviewed in the open.",
+    "A casual weekly meetup for developers, researchers and tinkerers in Bhutan. Every Saturday, 12 to 2 PM, at the Loden Office Top Floor Meeting Room in Thimphu. Ideas are written as markdown and reviewed in the open.",
   openGraph: {
     type: "website",
     siteName: site.name,

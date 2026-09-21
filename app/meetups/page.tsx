@@ -26,7 +26,7 @@ export default function MeetupsPage() {
         <p className="page-intro">
           We meet every Saturday, 12 to 2 PM, at the{" "}
           <a href={weekly.map} target="_blank" rel="noopener noreferrer">
-            Loden office
+            {weekly.place}
           </a>{" "}
           in Thimphu. Below is every session we&apos;ve written up, newest
           first. Photos are added by organisers afterwards; send yours to{" "}
