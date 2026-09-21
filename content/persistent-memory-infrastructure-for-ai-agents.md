@@ -2,8 +2,9 @@
 title: "Persistent Memory Infrastructure for AI Agents"
 description: "Presistening memories accross all the agents."
 author: "Tashi Norbu"
+github: "MasterScientist22"
 date: "2026-09-12"
-link: "null"
+tags: ["Agents", "Infra"]
 ---
 
 ## Project Overview

@@ -23,6 +23,7 @@ Create a new file in the `content` folder. Name it with lowercase hyphenated wor
 title: "Your idea's title"
 description: "One or two sentences summarizing the idea."
 author: "Your name or GitHub username"
+github: "your-github-username"
 date: "2026-09-05"
 link: "https://example.com/related-resource"
 ---
@@ -30,7 +31,9 @@ link: "https://example.com/related-resource"
 Write your idea here using normal markdown.
 ```
 
-`title`, `description`, `author`, and `date` (`YYYY-MM-DD`) are required — the build fails without them. `link` is optional; delete the line if you don't need it.
+`title`, `description`, `author`, and `date` (`YYYY-MM-DD`) are required — the build fails without them. `link`, `tags` and `github` are optional; delete the lines if you don't need them. With `github` set, your name on the post links to your profile.
+
+Meetups are recorded the same way: one markdown file per session in `content/meetups/`. See [CONTRIBUTING.md](CONTRIBUTING.md#meetups-organisers) for the fields.
 
 ### 3. Commit and push your branch
 

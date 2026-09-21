@@ -2,8 +2,10 @@
 title: "Artificial life: topics to explore"
 description: "Notes from today's discussion — six classic alife systems worth demoing at a meetup, and an idea to showcase a small artificial-life model using Kimi K3's Swarm/Clawbot feature and DeepSeek's Harness."
 author: "Kelden"
+github: "compressionmonkey"
 date: "2026-09-05"
 link: "https://ftxr6kpvrx326.kimi.page/"
+tags: ["Alife", "Notes"]
 ---
 
 Artificial life is a great rabbit hole: systems whose rules are trivial and whose behavior is not. Nobody writes the interesting behavior — it assembles itself.

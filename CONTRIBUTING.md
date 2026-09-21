@@ -38,6 +38,7 @@ You only need [Git](https://git-scm.com/downloads) installed and a GitHub accoun
 title: "Your idea's title"
 description: "One or two sentences summarizing the idea. This appears in search results and link previews."
 author: "Your name or GitHub username"
+github: "your-github-username"
 date: "2025-03-01"
 link: "https://example.com/related-resource"
 ---
@@ -57,8 +58,40 @@ Write your idea here using normal markdown.
 - `title`, `description`, `author`, and `date` are **required**. The build fails if any are missing.
 - `date` must use the `YYYY-MM-DD` format.
 - `link` is **optional** — include it when your post is about an external resource. You may delete the line otherwise.
+- `tags` is **optional** — a short list of labels shown on the post list, e.g. `tags: ["Agents", "Infra"]`.
+- `github` is **optional** — your GitHub username, e.g. `github: "compressionmonkey"`. When set, your name on the post links to your profile.
 
 **Images:** place image files in the `public/images` folder and reference them as `/images/your-file.png`. Remote image URLs (`https://…`) also work.
+
+### Meetups (organisers)
+
+The **Meetups** page and the **Next meetup** card on the home page are built from `content/meetups/*.md`, one file per session. Only `title` and `date` are required; a meetup dated today or later becomes the "next meetup". Photos and short videos go under `public/Meetups/<month-year>/` and are listed in the frontmatter. Match the folder's capitalisation exactly in `src`: URLs are case-sensitive once deployed.
+
+```markdown
+---
+title: "Lightning talks"
+date: "2026-10-03"
+dayUnknown: false               # true if only the month is known
+time: "14:00 – 17:00"          # optional, shown on the next-meetup card
+location: "Norzin Lam, Thimphu" # optional, shown on the next-meetup card
+going: 18                       # optional, RSVP count before the event
+attended: 22                    # optional, headcount after the event
+rsvp: "https://…"               # optional, where the RSVP button points
+talks:
+  - "Dzongkha OCR"                              # plain title, or:
+  - title: "Persistent memory for agents"
+    href: "/blog/persistent-memory-infrastructure-for-ai-agents"
+photos:
+  - src: "/Meetups/10-2026/03-10-2026.jpeg"
+    alt: "The room during the first talk"       # for screen readers
+    caption: "First talk"                       # short label on the tile
+  - src: "/Meetups/10-2026/03-10-2026-demo.mp4" # .mp4/.webm render as video
+---
+
+A short write-up of the session. Markdown and links work here.
+```
+
+The first photo listed is used as the cover on the home page, so put the best one first.
 
 ## 3. Commit and push your branch
 
