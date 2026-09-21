@@ -12,6 +12,7 @@ const FRONTMATTER = `---
 title: "Your idea"
 description: "One sentence."
 author: "Your name"
+github: "your-handle"         # optional
 date: "2026-10-03"
 link: "https://example.com"   # optional
 ---`;

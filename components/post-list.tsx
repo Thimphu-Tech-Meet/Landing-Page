@@ -2,7 +2,12 @@ import Link from "next/link";
 import type { Post } from "@/lib/posts";
 import { formatDate } from "@/lib/format";
 
-/** Editorial list of posts: date · title/description/tags · author. */
+/**
+ * Editorial list of posts: date · title/description/tags · author.
+ * The title link is stretched over the whole row (see `.post h3 a::after`
+ * in globals.css) so the row stays clickable, while the author link sits
+ * above it and goes straight to their GitHub profile.
+ */
 export function PostList({ posts }: { posts: Post[] }) {
   if (posts.length === 0) {
     return (
@@ -19,12 +24,14 @@ export function PostList({ posts }: { posts: Post[] }) {
       {posts.map((post) => {
         const { title, description, author, date, tags } = post.frontmatter;
         return (
-          <Link key={post.slug} className="post" href={`/blog/${post.slug}`}>
+          <article key={post.slug} className="post">
             <time className="date" dateTime={date}>
               {formatDate(date)}
             </time>
             <div>
-              <h3>{title}</h3>
+              <h3>
+                <Link href={`/blog/${post.slug}`}>{title}</Link>
+              </h3>
               <p>{description}</p>
               <div className="meta">
                 {tags?.map((tag) => (
@@ -36,10 +43,21 @@ export function PostList({ posts }: { posts: Post[] }) {
               </div>
             </div>
             <div className="by">
-              <b>{author}</b>
+              {post.authorUrl ? (
+                <a
+                  href={post.authorUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`${author} on GitHub`}
+                >
+                  <b>{author}</b>
+                </a>
+              ) : (
+                <b>{author}</b>
+              )}
               Member
             </div>
-          </Link>
+          </article>
         );
       })}
     </div>

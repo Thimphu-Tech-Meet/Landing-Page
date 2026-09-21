@@ -22,6 +22,11 @@ export interface PostFrontmatter {
   link?: string;
   /** Optional short labels shown on the post list, e.g. ["Agents", "Infra"]. */
   tags?: string[];
+  /**
+   * Optional GitHub handle ("compressionmonkey") or profile URL. When set,
+   * the author's name links straight to their profile.
+   */
+  github?: string;
 }
 
 export interface Post {
@@ -31,6 +36,8 @@ export interface Post {
   content: string;
   /** Estimated reading time in minutes. */
   minutes: number;
+  /** Full GitHub profile URL derived from `github`, or undefined. */
+  authorUrl?: string;
 }
 
 /** Returns every post slug derived from markdown filenames in /content. */
@@ -51,6 +58,20 @@ function normalizeLink(link: unknown): string | undefined {
   if (typeof link !== "string") return undefined;
   const trimmed = link.trim();
   return /^https?:\/\//i.test(trimmed) ? trimmed : undefined;
+}
+
+/**
+ * Accepts "handle", "@handle" or "https://github.com/handle" and returns
+ * the canonical profile URL. Anything that is not a valid handle is dropped.
+ */
+export function githubProfileUrl(github: unknown): string | undefined {
+  if (typeof github !== "string") return undefined;
+  let handle = github.trim().replace(/^@/, "");
+  const match = handle.match(/^https?:\/\/(?:www\.)?github\.com\/([^/?#]+)/i);
+  if (match) handle = match[1];
+  return /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(handle)
+    ? `https://github.com/${handle}`
+    : undefined;
 }
 
 function normalizeTags(tags: unknown): string[] | undefined {
@@ -90,9 +111,11 @@ export function getPostBySlug(slug: string): Post | null {
       date: new Date(frontmatter.date).toISOString().slice(0, 10),
       link: normalizeLink(frontmatter.link),
       tags: normalizeTags(frontmatter.tags),
+      github: typeof frontmatter.github === "string" ? frontmatter.github : undefined,
     },
     content,
     minutes: readingTime(content),
+    authorUrl: githubProfileUrl(frontmatter.github),
   };
 }
 

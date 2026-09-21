@@ -69,6 +69,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const { title, author, date, link, tags } = post.frontmatter;
   const eyebrow = tags?.length ? `Idea · ${tags[0]}` : "Idea";
+  const authorUrl = post.authorUrl;
+  const handle = authorUrl?.split("/").pop();
+
+  const authorName = authorUrl ? (
+    <a href={authorUrl} target="_blank" rel="noopener noreferrer" title={`${author} on GitHub`}>
+      <b>{author}</b>
+    </a>
+  ) : (
+    <b>{author}</b>
+  );
 
   return (
     <section>
@@ -82,9 +92,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <h1>{title}</h1>
 
           <div className="meta">
-            <span>
-              By <b>{author}</b>
-            </span>
+            <span>By {authorName}</span>
             <span>
               <b>
                 <time dateTime={date}>{formatDate(date)}</time>
@@ -111,7 +119,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="author">
             <i aria-hidden="true">{author.trim().charAt(0).toUpperCase()}</i>
             <div>
-              <b>{author}</b>
+              {authorUrl ? (
+                <a href={authorUrl} target="_blank" rel="noopener noreferrer">
+                  <b>{author}</b>
+                  <span className="handle">@{handle} on GitHub</span>
+                </a>
+              ) : (
+                <b>{author}</b>
+              )}
               <p>
                 Member of Thimphu Tech Meet. This post was contributed as a
                 markdown file and reviewed in the open.{" "}

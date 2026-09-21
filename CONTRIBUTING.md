@@ -38,6 +38,7 @@ You only need [Git](https://git-scm.com/downloads) installed and a GitHub accoun
 title: "Your idea's title"
 description: "One or two sentences summarizing the idea. This appears in search results and link previews."
 author: "Your name or GitHub username"
+github: "your-github-username"
 date: "2025-03-01"
 link: "https://example.com/related-resource"
 ---
@@ -58,6 +59,7 @@ Write your idea here using normal markdown.
 - `date` must use the `YYYY-MM-DD` format.
 - `link` is **optional** — include it when your post is about an external resource. You may delete the line otherwise.
 - `tags` is **optional** — a short list of labels shown on the post list, e.g. `tags: ["Agents", "Infra"]`.
+- `github` is **optional** — your GitHub username, e.g. `github: "compressionmonkey"`. When set, your name on the post links to your profile.
 
 **Images:** place image files in the `public/images` folder and reference them as `/images/your-file.png`. Remote image URLs (`https://…`) also work.
 
