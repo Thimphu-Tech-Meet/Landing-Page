@@ -256,6 +256,12 @@ section + section { border-top: 1px solid var(--line-2); }
   padding: 22px;
   box-shadow: var(--shadow);
 }
+.next .venue-photo {
+  aspect-ratio: 5 / 4;
+  margin: -22px -22px 20px;
+  border-radius: 14px 14px 0 0;
+  border-bottom: 1px solid var(--line);
+}
 .next .eyebrow { display: flex; align-items: center; gap: 8px; }
 .next .eyebrow::before {
   content: "";
@@ -415,6 +421,50 @@ section + section { border-top: 1px solid var(--line-2); }
 .ph.v2 { background: linear-gradient(160deg, var(--photo-b), var(--photo-a) 60%, var(--gold)); }
 .ph.v3 { background: linear-gradient(200deg, var(--photo-a), var(--photo-b) 55%, var(--accent)); }
 .ph.v4 { background: linear-gradient(20deg, var(--photo-b), var(--photo-a)); }
+
+/* ------------------------------------------------------------------ */
+/* Venue (hero card header + "Where we meet" block)                   */
+/* ------------------------------------------------------------------ */
+.venue-photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--photo-b);
+}
+/* Source is a portrait Street View capture; position the crop on the
+   building and keep the map controls along the bottom edge out of frame. */
+.venue-photo img { object-fit: cover; object-position: 50% 42%; transition: transform 0.4s ease; }
+.venue-photo:hover img { transform: scale(1.03); }
+.venue-photo span {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+  max-width: calc(100% - 24px);
+}
+
+.venue {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 44px;
+  box-shadow: var(--shadow);
+}
+.venue .venue-photo { min-height: 280px; height: 100%; }
+.venue-info { padding: 28px; }
+.venue-info h3 { font-size: 26px; letter-spacing: -0.02em; margin: 8px 0 10px; }
+.venue-info p { margin: 0 0 20px; color: var(--ink-2); font-size: 17px; max-width: 46ch; }
+.venue-info .actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ------------------------------------------------------------------ */
 /* Meetups timeline                                                   */
@@ -725,6 +775,10 @@ footer.site .made { font-size: 15px; color: var(--ink-3); }
 /* ------------------------------------------------------------------ */
 @media (max-width: 820px) {
   .hero .grid { grid-template-columns: 1fr; gap: 28px; }
+  .next .venue-photo { aspect-ratio: 16 / 10; }
+  .venue { grid-template-columns: 1fr; }
+  .venue .venue-photo { aspect-ratio: 16 / 10; min-height: 0; height: auto; }
+  .venue-info { padding: 22px; }
   .doors { grid-template-columns: 1fr; }
   .strip { grid-template-columns: repeat(2, 1fr); }
   .event { grid-template-columns: 1fr; gap: 16px; }

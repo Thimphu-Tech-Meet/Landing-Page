@@ -6,6 +6,7 @@ import { dateParts } from "@/lib/format";
 import { PhotoTile } from "@/components/photo-tile";
 import { mdxComponents } from "@/components/mdx-components";
 import { site, weekly } from "@/lib/site";
+import { VenueCard } from "@/components/venue";
 
 export const metadata: Metadata = {
   title: "Meetups",
@@ -33,6 +34,8 @@ export default function MeetupsPage() {
           <a href={`mailto:${site.email}`}>{site.email}</a> and we&apos;ll
           include them.
         </p>
+
+        <VenueCard />
 
         {meetups.length === 0 ? (
           <p className="timeline-empty">

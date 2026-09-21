@@ -35,6 +35,6 @@ export const sponsors: Sponsor[] = [
   {
     name: "Kelden",
     href: "https://keldendev.info/",
-    logo: "/kelden-icon.png",
+    logo: "/sponsors/kelden-icon.png",
   },
 ];

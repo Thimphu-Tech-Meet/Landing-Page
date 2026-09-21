@@ -5,6 +5,9 @@ import { dateParts, formatDateWithWeekday } from "@/lib/format";
 import { PostList } from "@/components/post-list";
 import { PhotoTile } from "@/components/photo-tile";
 import { site, weekly } from "@/lib/site";
+import { VenuePhoto } from "@/components/venue";
+
+const HERO_PHOTO_SIZES = "(max-width: 820px) calc(100vw - 40px), 420px";
 
 /**
  * Home: hero + next meetup, two doors (Ideas / Meetups), the latest
@@ -122,6 +125,7 @@ function NextMeetupCard({ meetup }: { meetup: Meetup | null }) {
   if (!meetup) {
     return (
       <aside className="next">
+        <VenuePhoto priority sizes={HERO_PHOTO_SIZES} />
         <div className="eyebrow">Next meetup</div>
         <h3>{weekly.day}</h3>
         <div className="when">
@@ -149,6 +153,7 @@ function NextMeetupCard({ meetup }: { meetup: Meetup | null }) {
 
   return (
     <aside className="next">
+      <VenuePhoto priority sizes={HERO_PHOTO_SIZES} />
       <div className="eyebrow">Next meetup</div>
       <h3>{title}</h3>
       <div className="when">
