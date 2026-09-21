@@ -10,16 +10,29 @@ import { todayIso } from "./format";
  */
 const MEETUPS_DIR = path.join(process.cwd(), "content", "meetups");
 
-export interface MeetupPhoto {
-  /** Path under /public (e.g. "/meetups/2026-09-05/IMG_0412.jpg") or a full URL. */
+export interface MeetupMedia {
+  /** Path under /public (e.g. "/meetups/09-2026/05-09-2026.jpeg") or a full URL. */
   src: string;
+  /** Description for screen readers. */
   alt?: string;
+  /** Short label shown on the tile. */
+  caption?: string;
+  /** Derived from the file extension. */
+  kind: "photo" | "video";
+}
+
+export interface MeetupTalk {
+  title: string;
+  /** Optional link, e.g. to the write-up on this site or to slides. */
+  href?: string;
 }
 
 export interface MeetupFrontmatter {
   title: string;
   /** ISO 8601 date, e.g. "2026-09-05". */
   date: string;
+  /** True when only the month is known; the day is hidden in the timeline. */
+  dayUnknown: boolean;
   /** e.g. "14:00 – 17:00" — shown on the next-meetup card. */
   time?: string;
   /** e.g. "Norzin Lam, Thimphu" — shown on the next-meetup card. */
@@ -30,11 +43,10 @@ export interface MeetupFrontmatter {
   going?: number;
   /** Where to RSVP for an upcoming meetup. Defaults to the contribute page. */
   rsvp?: string;
-  /** Mark entries that were not in-person gatherings (e.g. "the blog goes live"). */
+  /** Mark entries that were not in-person gatherings. */
   online?: boolean;
-  /** Talk titles given at the session. */
-  talks?: string[];
-  photos?: MeetupPhoto[];
+  talks: MeetupTalk[];
+  photos: MeetupMedia[];
 }
 
 export interface Meetup {
@@ -44,22 +56,47 @@ export interface Meetup {
   content: string;
 }
 
-function normalizePhotos(photos: unknown): MeetupPhoto[] {
+const VIDEO_EXT = /\.(mp4|webm|mov|m4v)(\?.*)?$/i;
+
+function normalizePhotos(photos: unknown): MeetupMedia[] {
   if (!Array.isArray(photos)) return [];
   return photos
-    .map((p) => {
-      if (typeof p === "string") return { src: p };
-      if (p && typeof p === "object" && typeof (p as MeetupPhoto).src === "string") {
-        return { src: (p as MeetupPhoto).src, alt: (p as MeetupPhoto).alt };
+    .map((p): MeetupMedia | null => {
+      let src: string | undefined;
+      let alt: string | undefined;
+      let caption: string | undefined;
+      if (typeof p === "string") {
+        src = p;
+      } else if (p && typeof p === "object" && typeof (p as { src?: unknown }).src === "string") {
+        const o = p as { src: string; alt?: unknown; caption?: unknown };
+        src = o.src;
+        alt = typeof o.alt === "string" ? o.alt : undefined;
+        caption = typeof o.caption === "string" ? o.caption : undefined;
+      }
+      if (!src) return null;
+      return { src, alt, caption, kind: VIDEO_EXT.test(src) ? "video" : "photo" };
+    })
+    .filter((p): p is MeetupMedia => p !== null);
+}
+
+function normalizeTalks(talks: unknown): MeetupTalk[] {
+  if (!Array.isArray(talks)) return [];
+  return talks
+    .map((t): MeetupTalk | null => {
+      if (typeof t === "string") return t.trim() ? { title: t.trim() } : null;
+      if (t && typeof t === "object" && typeof (t as { title?: unknown }).title === "string") {
+        const o = t as { title: string; href?: unknown };
+        return { title: o.title, href: typeof o.href === "string" ? o.href : undefined };
       }
       return null;
     })
-    .filter((p): p is MeetupPhoto => p !== null);
+    .filter((t): t is MeetupTalk => t !== null);
 }
 
 function toNumber(value: unknown): number | undefined {
+  if (value === undefined || value === null || value === "") return undefined;
   const n = Number(value);
-  return Number.isFinite(n) && value !== undefined && value !== null && value !== "" ? n : undefined;
+  return Number.isFinite(n) ? n : undefined;
 }
 
 export function getMeetupSlugs(): string[] {
@@ -76,7 +113,7 @@ export function getMeetupBySlug(slug: string): Meetup | null {
 
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(raw);
-  const fm = data as Partial<MeetupFrontmatter>;
+  const fm = data as Record<string, unknown>;
 
   if (!fm.title || !fm.date) {
     throw new Error(
@@ -88,14 +125,15 @@ export function getMeetupBySlug(slug: string): Meetup | null {
     slug,
     frontmatter: {
       title: String(fm.title),
-      date: new Date(fm.date).toISOString().slice(0, 10),
+      date: new Date(fm.date as string | Date).toISOString().slice(0, 10),
+      dayUnknown: Boolean(fm.dayUnknown),
       time: fm.time ? String(fm.time) : undefined,
       location: fm.location ? String(fm.location) : undefined,
       attended: toNumber(fm.attended),
       going: toNumber(fm.going),
       rsvp: fm.rsvp ? String(fm.rsvp) : undefined,
       online: Boolean(fm.online),
-      talks: Array.isArray(fm.talks) ? fm.talks.map(String).filter(Boolean) : [],
+      talks: normalizeTalks(fm.talks),
       photos: normalizePhotos(fm.photos),
     },
     content: content.trim(),
@@ -125,7 +163,15 @@ export function getNextMeetup(): Meetup | null {
   return upcoming[0] ?? null;
 }
 
-/** Total photos across all meetups — used for the "N photos" counter. */
+/** Total photos (still images) across the given meetups. */
 export function countPhotos(meetups: Meetup[]): number {
-  return meetups.reduce((sum, m) => sum + (m.frontmatter.photos?.length ?? 0), 0);
+  return meetups.reduce(
+    (sum, m) => sum + m.frontmatter.photos.filter((p) => p.kind === "photo").length,
+    0
+  );
+}
+
+/** First still photo of a meetup, used as its cover on the home page. */
+export function coverPhoto(meetup: Meetup): MeetupMedia | undefined {
+  return meetup.frontmatter.photos.find((p) => p.kind === "photo");
 }

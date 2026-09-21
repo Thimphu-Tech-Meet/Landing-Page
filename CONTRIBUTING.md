@@ -65,26 +65,33 @@ Write your idea here using normal markdown.
 
 ### Meetups (organisers)
 
-The **Meetups** page and the **Next meetup** card on the home page are built from `content/meetups/*.md`, one file per session. Only `title` and `date` are required; a meetup dated today or later becomes the "next meetup". Photos go in `public/meetups/<date>/` and are listed in the frontmatter.
+The **Meetups** page and the **Next meetup** card on the home page are built from `content/meetups/*.md`, one file per session. Only `title` and `date` are required; a meetup dated today or later becomes the "next meetup". Photos and short videos go under `public/Meetups/<month-year>/` and are listed in the frontmatter. Match the folder's capitalisation exactly in `src`: URLs are case-sensitive once deployed.
 
 ```markdown
 ---
 title: "Lightning talks"
 date: "2026-10-03"
+dayUnknown: false               # true if only the month is known
 time: "14:00 – 17:00"          # optional, shown on the next-meetup card
 location: "Norzin Lam, Thimphu" # optional, shown on the next-meetup card
 going: 18                       # optional, RSVP count before the event
 attended: 22                    # optional, headcount after the event
 rsvp: "https://…"               # optional, where the RSVP button points
 talks:
-  - "Dzongkha OCR"
+  - "Dzongkha OCR"                              # plain title, or:
+  - title: "Persistent memory for agents"
+    href: "/blog/persistent-memory-infrastructure-for-ai-agents"
 photos:
-  - src: "/meetups/2026-10-03/IMG_0301.jpg"
-    alt: "The room during the first talk"
+  - src: "/Meetups/10-2026/03-10-2026.jpeg"
+    alt: "The room during the first talk"       # for screen readers
+    caption: "First talk"                       # short label on the tile
+  - src: "/Meetups/10-2026/03-10-2026-demo.mp4" # .mp4/.webm render as video
 ---
 
 A short write-up of the session. Markdown and links work here.
 ```
+
+The first photo listed is used as the cover on the home page, so put the best one first.
 
 ## 3. Commit and push your branch
 

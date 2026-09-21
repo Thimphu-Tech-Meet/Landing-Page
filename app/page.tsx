@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
-import { countPhotos, getNextMeetup, getPastMeetups, type Meetup } from "@/lib/meetups";
+import { countPhotos, coverPhoto, getNextMeetup, getPastMeetups, type Meetup } from "@/lib/meetups";
 import { dateParts, formatDateWithWeekday } from "@/lib/format";
 import { PostList } from "@/components/post-list";
 import { PhotoTile } from "@/components/photo-tile";
@@ -103,12 +103,15 @@ export default function HomePage() {
             <div className="strip">
               {past.slice(0, 4).map((m, i) => {
                 const { day, monthShort } = dateParts(m.frontmatter.date);
+                const when = m.frontmatter.dayUnknown
+                  ? monthShort
+                  : `${String(day).padStart(2, "0")} ${monthShort}`;
                 return (
-                  <Link key={m.slug} href="/meetups" aria-label={m.frontmatter.title}>
+                  <Link key={m.slug} href={`/meetups#${m.slug}`} aria-label={m.frontmatter.title}>
                     <PhotoTile
-                      photo={m.frontmatter.photos?.[0]}
+                      media={coverPhoto(m)}
                       index={i + 2}
-                      label={`${String(day).padStart(2, "0")} ${monthShort} · ${m.frontmatter.title}`}
+                      label={`${when} · ${m.frontmatter.title}`}
                     />
                   </Link>
                 );

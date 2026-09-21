@@ -418,6 +418,10 @@ section + section { border-top: 1px solid var(--line-2); }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+.ph video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.ph.is-video { align-items: flex-start; }
+.ph.is-video::before { display: none; }
+.ph.is-video span { pointer-events: none; }
 .ph.v2 { background: linear-gradient(160deg, var(--photo-b), var(--photo-a) 60%, var(--gold)); }
 .ph.v3 { background: linear-gradient(200deg, var(--photo-a), var(--photo-b) 55%, var(--accent)); }
 .ph.v4 { background: linear-gradient(20deg, var(--photo-b), var(--photo-a)); }
@@ -518,7 +522,9 @@ section + section { border-top: 1px solid var(--line-2); }
   background: var(--line-2);
   color: var(--ink-2);
 }
-.event .talks a:hover { color: var(--accent); }
+.event .talks a { color: var(--accent); background: var(--accent-soft); }
+.event .talks a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.event:target { scroll-margin-top: 80px; }
 .gallery { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 110px; gap: 8px; }
 .gallery .ph { aspect-ratio: auto; height: 100%; }
 .gallery .ph:nth-child(1) { grid-column: span 3; grid-row: span 2; }

@@ -54,20 +54,33 @@ export default function MeetupsPage() {
   );
 }
 
+function isInternal(href: string) {
+  return href.startsWith("/");
+}
+
 function MeetupEvent({ meetup }: { meetup: Meetup }) {
-  const { title, date, attended, online, talks = [], photos = [] } = meetup.frontmatter;
+  const { title, date, dayUnknown, attended, online, talks, photos } = meetup.frontmatter;
   const { day, monthShort, year } = dateParts(date);
+  const stills = photos.filter((p) => p.kind === "photo").length;
+  const videos = photos.length - stills;
   const hasStats = attended !== undefined || online || photos.length > 0 || talks.length > 0;
 
   return (
     <div className="event" id={meetup.slug}>
       <div className="when">
-        <div>
-          <div className="n">{String(day).padStart(2, "0")}</div>
-          <div className="m">
-            {monthShort} {year}
+        {dayUnknown ? (
+          <div>
+            <div className="n">{monthShort}</div>
+            <div className="m">{year}</div>
           </div>
-        </div>
+        ) : (
+          <div>
+            <div className="n">{String(day).padStart(2, "0")}</div>
+            <div className="m">
+              {monthShort} {year}
+            </div>
+          </div>
+        )}
         {hasStats && (
           <div className="stats">
             {attended !== undefined && (
@@ -80,9 +93,14 @@ function MeetupEvent({ meetup }: { meetup: Meetup }) {
                 <b>—</b> online
               </span>
             )}
-            {photos.length > 0 && (
+            {stills > 0 && (
               <span>
-                <b>{photos.length}</b> {photos.length === 1 ? "photo" : "photos"}
+                <b>{stills}</b> {stills === 1 ? "photo" : "photos"}
+              </span>
+            )}
+            {videos > 0 && (
+              <span>
+                <b>{videos}</b> {videos === 1 ? "video" : "videos"}
               </span>
             )}
             {talks.length > 0 && (
@@ -103,9 +121,21 @@ function MeetupEvent({ meetup }: { meetup: Meetup }) {
         )}
         {talks.length > 0 && (
           <div className="talks">
-            {talks.map((t) => (
-              <span key={t}>{t}</span>
-            ))}
+            {talks.map((t) =>
+              t.href ? (
+                isInternal(t.href) ? (
+                  <Link key={t.title} href={t.href}>
+                    {t.title} →
+                  </Link>
+                ) : (
+                  <a key={t.title} href={t.href} target="_blank" rel="noopener noreferrer">
+                    {t.title} ↗
+                  </a>
+                )
+              ) : (
+                <span key={t.title}>{t.title}</span>
+              )
+            )}
           </div>
         )}
         <div className="gallery">
@@ -115,7 +145,7 @@ function MeetupEvent({ meetup }: { meetup: Meetup }) {
             photos.map((p, i) => (
               <PhotoTile
                 key={p.src}
-                photo={p}
+                media={p}
                 index={i}
                 sizes="(max-width: 820px) 100vw, 50vw"
               />
