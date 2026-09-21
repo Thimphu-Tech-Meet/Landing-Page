@@ -1,9 +1,9 @@
 ---
 title: "Planning a hackathon"
-date: "2026-03-22"
+date: "2026-09-19"
 attended: 9
 photos:
-  - src: "/Meetups/22-03-2026/22-03-2026-we-are-discussing-a-hackathon.jpeg"
+  - src: "/Meetups/19-09-2026/19-09-2026-we-are-discussing-a-hackathon.jpeg"
     alt: "Nine people seated around a long wooden table in a bright room with painted windows, laptops open, discussing"
     caption: "Discussing a hackathon"
 ---
