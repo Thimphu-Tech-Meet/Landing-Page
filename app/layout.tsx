@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -49,13 +50,30 @@ export default function RootLayout({
         </main>
 
         <footer className="border-t border-neutral-200">
-          <div className="mx-auto max-w-prose px-4 py-6 text-sm text-neutral-500">
-            Open source and community-built.{" "}
+          <div className="mx-auto flex max-w-prose flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-6 text-sm text-neutral-500">
+            <span>
+              Open source and community-built.{" "}
+              <a
+                href="https://github.com/Thimphu-Tech-Meet/Landing-Page"
+                className="underline underline-offset-4 hover:text-neutral-700"
+              >
+                View on GitHub
+              </a>
+            </span>
             <a
-              href="https://github.com/Thimphu-Tech-Meet/Landing-Page"
-              className="underline underline-offset-4 hover:text-neutral-700"
+              href="https://keldendev.info/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 hover:text-neutral-700"
             >
-              View on GitHub
+              <Image
+                src="/kelden-icon.png"
+                alt="Kelden's website icon"
+                width={20}
+                height={20}
+                className="rounded"
+              />
+              <span>Supported by Kelden ❤️</span>
             </a>
           </div>
         </footer>
