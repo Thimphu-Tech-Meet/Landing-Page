@@ -24,11 +24,10 @@ export function Sponsors() {
               ))}
             </div>
           </div>
+          {/* Sponsorship enquiries go straight to the organiser's inbox for now. */}
           <a
             className="become"
-            href={site.newIssue}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${site.email}?subject=${encodeURIComponent("Sponsoring Thimphu Tech Meet")}`}
           >
             Become a sponsor →
           </a>
