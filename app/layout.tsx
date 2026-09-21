@@ -1,24 +1,55 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { Bricolage_Grotesque, IBM_Plex_Mono, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SiteHeader } from "@/components/site-header";
+import { Sponsors } from "@/components/sponsors";
+import { SiteFooter } from "@/components/site-footer";
+import { themeInitScript } from "@/components/theme-toggle";
+import { site } from "@/lib/site";
 import "./globals.css";
 
+/*
+ * Three typefaces, self-hosted by next/font at build time (no runtime
+ * requests to Google): a display grotesque for headings and UI, a serif
+ * for reading, and a mono for dates, labels and code.
+ */
+const display = Bricolage_Grotesque({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const body = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 /**
- * Site-wide metadata. Per-post metadata in app/blog/[slug]/page.tsx
- * overrides these fields via generateMetadata().
+ * Site-wide metadata. Per-page metadata (e.g. app/blog/[slug]/page.tsx)
+ * overrides these fields via `metadata` / generateMetadata().
  */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thimphu-tech-meet.github.io"),
+  metadataBase: new URL(site.url),
   title: {
-    default: "Thimphu Tech Meet — Community Ideas",
-    template: "%s | Thimphu Tech Meet",
+    default: `${site.name} — People who build things, in the same room`,
+    template: `%s | ${site.name}`,
   },
   description:
-    "An open-source, community-driven collection of ideas and links. Every post is a markdown file contributed via pull request.",
+    "An open meetup for developers, researchers and tinkerers in Bhutan. Ideas are written as markdown and reviewed in the open; meetups are photographed and dated.",
   openGraph: {
     type: "website",
-    siteName: "Thimphu Tech Meet",
+    siteName: site.name,
   },
   twitter: {
     card: "summary_large_image",
@@ -29,56 +60,21 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col bg-white text-neutral-900 antialiased">
-        <header className="border-b border-neutral-200">
-          <nav className="mx-auto flex max-w-prose items-center justify-between px-4 py-4">
-            <Link href="/" className="text-lg font-bold tracking-tight">
-              Thimphu Tech Meet
-            </Link>
-            <a
-              href="https://github.com/Thimphu-Tech-Meet/Landing-Page/blob/main/CONTRIBUTING.md"
-              className="rounded-md bg-neutral-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-neutral-700"
-            >
-              Contribute an idea
-            </a>
-          </nav>
-        </header>
-
-        <main className="mx-auto w-full max-w-prose flex-1 px-4 py-10">
-          {children}
-        </main>
-
-        <footer className="border-t border-neutral-200">
-          <div className="grid grid-cols-1 items-center gap-y-2 px-4 py-6 text-sm text-neutral-500 sm:grid-cols-[1fr_auto_1fr]">
-            <div className="text-center sm:col-start-2">
-              Open source and community-built.{" "}
-              <a
-                href="https://github.com/Thimphu-Tech-Meet/Landing-Page"
-                className="underline underline-offset-4 hover:text-neutral-700"
-              >
-                View on GitHub
-              </a>
-            </div>
-            <div className="justify-self-center sm:col-start-3 sm:justify-self-end">
-              <a
-                href="https://keldendev.info/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-neutral-700"
-              >
-                <Image
-                  src="/kelden-icon.png"
-                  alt="Kelden's website icon"
-                  width={20}
-                  height={20}
-                  className="rounded"
-                />
-                <span>Supported by Kelden ❤️</span>
-              </a>
-            </div>
-          </div>
-        </footer>
+    // suppressHydrationWarning: the inline theme script may set data-theme
+    // before React hydrates, which is intentional.
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body>
+        <SiteHeader />
+        <main>{children}</main>
+        <Sponsors />
+        <SiteFooter />
         <Analytics />
       </body>
     </html>

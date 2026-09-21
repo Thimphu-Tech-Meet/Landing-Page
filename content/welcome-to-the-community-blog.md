@@ -4,6 +4,7 @@ description: "How this site works and how you can add your own idea with nothing
 author: "Kelden"
 date: "2025-01-15"
 link: "https://github.com/Thimphu-Tech-Meet/Landing-Page"
+tags: ["Community"]
 ---
 
 This site is a living collection of ideas from the Thimphu Tech Meet community. There is no database, no CMS, and no admin panel — **every post is a markdown file in this repository**.

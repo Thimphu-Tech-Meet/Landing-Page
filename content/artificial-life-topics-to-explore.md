@@ -4,6 +4,7 @@ description: "Notes from today's discussion — six classic alife systems worth 
 author: "Kelden"
 date: "2026-09-05"
 link: "https://ftxr6kpvrx326.kimi.page/"
+tags: ["Alife", "Notes"]
 ---
 
 Artificial life is a great rabbit hole: systems whose rules are trivial and whose behavior is not. Nobody writes the interesting behavior — it assembles itself.

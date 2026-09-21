@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { mdxComponents } from "@/components/mdx-components";
+import { formatDate } from "@/lib/format";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -66,49 +67,60 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const { title, author, date, link } = post.frontmatter;
+  const { title, author, date, link, tags } = post.frontmatter;
+  const eyebrow = tags?.length ? `Idea · ${tags[0]}` : "Idea";
 
   return (
-    <article>
-      <Link
-        href="/"
-        className="text-sm text-neutral-500 underline-offset-4 hover:underline"
-      >
-        ← All ideas
-      </Link>
+    <section>
+      <div className="wrap">
+        <article className="article">
+          <Link href="/ideas" className="back">
+            ← All ideas
+          </Link>
 
-      <h1 className="mt-4 text-3xl font-bold tracking-tight">{title}</h1>
+          <div className="eyebrow">{eyebrow}</div>
+          <h1>{title}</h1>
 
-      <p className="mt-3 text-sm text-neutral-500">
-        By {author} ·{" "}
-        <time dateTime={date}>
-          {new Date(date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-      </p>
+          <div className="meta">
+            <span>
+              By <b>{author}</b>
+            </span>
+            <span>
+              <b>
+                <time dateTime={date}>{formatDate(date)}</time>
+              </b>
+            </span>
+            <span>{post.minutes} min read</span>
+          </div>
 
-      {link && (
-        <p className="mt-4 rounded-md border border-blue-100 bg-blue-50 px-4 py-3 text-sm">
-          Linked resource:{" "}
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-blue-700 underline underline-offset-4"
-          >
-            {link}
-          </a>
-        </p>
-      )}
+          {link && (
+            <aside className="linked">
+              <span className="label">Linked resource</span>
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                {link}
+              </a>
+            </aside>
+          )}
 
-      <div className="mt-8">
-        {/* MDXRemote (RSC flavour) renders the markdown server-side.
-            mdxComponents maps <img> to next/image and styles primitives. */}
-        <MDXRemote source={post.content} components={mdxComponents} />
+          <div className="prose">
+            {/* MDXRemote (RSC flavour) renders the markdown server-side.
+                Typography comes from `.article .prose` in globals.css. */}
+            <MDXRemote source={post.content} components={mdxComponents} />
+          </div>
+
+          <div className="author">
+            <i aria-hidden="true">{author.trim().charAt(0).toUpperCase()}</i>
+            <div>
+              <b>{author}</b>
+              <p>
+                Member of Thimphu Tech Meet. This post was contributed as a
+                markdown file and reviewed in the open.{" "}
+                <Link href="/ideas">More ideas →</Link>
+              </p>
+            </div>
+          </div>
+        </article>
       </div>
-    </article>
+    </section>
   );
 }

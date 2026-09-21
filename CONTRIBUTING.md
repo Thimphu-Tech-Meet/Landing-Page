@@ -57,8 +57,32 @@ Write your idea here using normal markdown.
 - `title`, `description`, `author`, and `date` are **required**. The build fails if any are missing.
 - `date` must use the `YYYY-MM-DD` format.
 - `link` is **optional** — include it when your post is about an external resource. You may delete the line otherwise.
+- `tags` is **optional** — a short list of labels shown on the post list, e.g. `tags: ["Agents", "Infra"]`.
 
 **Images:** place image files in the `public/images` folder and reference them as `/images/your-file.png`. Remote image URLs (`https://…`) also work.
+
+### Meetups (organisers)
+
+The **Meetups** page and the **Next meetup** card on the home page are built from `content/meetups/*.md`, one file per session. Only `title` and `date` are required; a meetup dated today or later becomes the "next meetup". Photos go in `public/meetups/<date>/` and are listed in the frontmatter.
+
+```markdown
+---
+title: "Lightning talks"
+date: "2026-10-03"
+time: "14:00 – 17:00"          # optional, shown on the next-meetup card
+location: "Norzin Lam, Thimphu" # optional, shown on the next-meetup card
+going: 18                       # optional, RSVP count before the event
+attended: 22                    # optional, headcount after the event
+rsvp: "https://…"               # optional, where the RSVP button points
+talks:
+  - "Dzongkha OCR"
+photos:
+  - src: "/meetups/2026-10-03/IMG_0301.jpg"
+    alt: "The room during the first talk"
+---
+
+A short write-up of the session. Markdown and links work here.
+```
 
 ## 3. Commit and push your branch
 
