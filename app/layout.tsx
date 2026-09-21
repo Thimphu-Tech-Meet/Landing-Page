@@ -50,8 +50,8 @@ export default function RootLayout({
         </main>
 
         <footer className="border-t border-neutral-200">
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-6 text-sm text-neutral-500">
-            <div>
+          <div className="grid grid-cols-1 items-center gap-y-2 px-4 py-6 text-sm text-neutral-500 sm:grid-cols-[1fr_auto_1fr]">
+            <div className="text-center sm:col-start-2">
               Open source and community-built.{" "}
               <a
                 href="https://github.com/Thimphu-Tech-Meet/Landing-Page"
@@ -60,7 +60,7 @@ export default function RootLayout({
                 View on GitHub
               </a>
             </div>
-            <div className="ml-auto">
+            <div className="justify-self-center sm:col-start-3 sm:justify-self-end">
               <a
                 href="https://keldendev.info/"
                 target="_blank"
