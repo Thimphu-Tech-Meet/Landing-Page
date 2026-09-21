@@ -32,9 +32,10 @@ export const sponsors: Sponsor[] = [
     href: "https://www.loden.org/",
     logo: "/sponsors/loden-foundation.png",
   },
-  {
-    name: "Kelden",
-    href: "https://keldendev.info/",
-    logo: "/sponsors/kelden-icon.png",
-  },
 ];
+
+/** Credited in the footer's bottom-right corner. */
+export const builtBy = {
+  name: "Kelden",
+  href: "https://keldendev.info/",
+} as const;

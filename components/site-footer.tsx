@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { builtBy, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -15,6 +15,12 @@ export function SiteFooter() {
             Raise an issue
           </a>
           <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+        <div className="built">
+          Built with <span aria-label="love">❤️</span> by{" "}
+          <a href={builtBy.href} target="_blank" rel="noopener noreferrer">
+            {builtBy.name}
+          </a>
         </div>
       </div>
     </footer>

@@ -784,6 +784,9 @@ footer.site .wrap { display: flex; justify-content: space-between; gap: 16px; fl
 footer.site .links { display: flex; gap: 20px; font-family: var(--display); font-size: 14px; font-weight: 600; color: var(--ink-2); flex-wrap: wrap; }
 footer.site .links a:hover { color: var(--accent); }
 footer.site .made { font-size: 15px; color: var(--ink-3); }
+footer.site .built { margin-left: auto; font-size: 15px; color: var(--ink-3); white-space: nowrap; }
+footer.site .built a { color: var(--ink-2); font-family: var(--display); font-weight: 600; }
+footer.site .built a:hover { color: var(--accent); }
 
 /* ------------------------------------------------------------------ */
 /* Not found                                                          */
