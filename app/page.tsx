@@ -29,14 +29,10 @@ export default function HomePage() {
             <h1>
               People who build things, <em>in the same room</em> every Saturday.
             </h1>
+            {/* When, where and how to reach us live in the card alongside. */}
             <p className="lede">
               A casual, open meetup for developers, researchers and tinkerers in
-              Bhutan. Saturdays, 12 to 2 PM, at the{" "}
-              <a href={weekly.map} target="_blank" rel="noopener noreferrer">
-                {weekly.place}
-              </a>{" "}
-              in Thimphu. Just walk in, or{" "}
-              <a href={`mailto:${site.email}`}>email us</a>.
+              Bhutan.
             </p>
             <div className="actions">
               <Link className="btn primary" href="/ideas">
