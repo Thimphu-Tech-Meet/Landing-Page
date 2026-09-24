@@ -29,7 +29,6 @@ export function EventDock() {
           <path d="M16 3v4M8 3v4M3 10h18M12 14v4M10 16h4" />
         </svg>
         Host an event
-        <span className="via">on Luma</span>
       </a>
     </div>
   );

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { builtBy, site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -7,7 +6,6 @@ export function SiteFooter() {
       <div className="wrap">
         <div className="made">Open source and community-built in Thimphu.</div>
         <div className="links">
-          <Link href="/contribute">Contribute</Link>
           <a href={site.newIssue} target="_blank" rel="noopener noreferrer">
             Raise an issue
           </a>

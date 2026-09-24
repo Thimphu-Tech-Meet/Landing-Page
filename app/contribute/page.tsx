@@ -57,32 +57,13 @@ content/your-idea.md`}</pre>
           </div>
         </div>
 
-        <div className="split">
-          <div className="note">
-            <h3>Sending photos?</h3>
-            <p>
-              Don&apos;t open a PR. Hand them to an organiser on Saturday or{" "}
-              <a href={`mailto:${site.email}`}>email them to us</a>; we add
-              them to that week&apos;s meetup file.
-            </p>
-          </div>
-          <div className="note plain">
-            <h3>Want to give a talk?</h3>
-            <p>
-              Five to twenty minutes, any level.{" "}
-              <a href={`mailto:${site.email}`}>Email us</a> a title, or just
-              turn up on Saturday and say so; we&apos;ll slot you in.
-            </p>
-          </div>
-        </div>
-
-        <div className="actions-row">
-          <a className="btn primary" href={site.repo} target="_blank" rel="noopener noreferrer">
-            Open the repository on GitHub
-          </a>
-          <a className="btn" href={site.contributing} target="_blank" rel="noopener noreferrer">
-            Read the full guidelines
-          </a>
+        <div className="note solo">
+          <h3>Sending photos?</h3>
+          <p>
+            Don&apos;t open a PR. Hand them to an organiser on Saturday or{" "}
+            <a href={`mailto:${site.email}`}>email them to us</a>; we add
+            them to that week&apos;s meetup file.
+          </p>
         </div>
       </div>
     </section>

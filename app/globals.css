@@ -721,6 +721,7 @@ section + section { border-top: 1px solid var(--line-2); }
   border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
 }
 .note.plain { background: var(--surface); border-color: var(--line); }
+.note.solo { margin-top: 40px; }
 .note h3 { font-size: 20px; margin-bottom: 8px; }
 .note p { margin: 0; font-size: 16px; color: var(--ink-2); }
 .note a { color: var(--accent); font-family: var(--display); font-weight: 600; }
@@ -800,7 +801,6 @@ section + section { border-top: 1px solid var(--line-2); }
   box-shadow: var(--shadow), 0 0 0 4px color-mix(in srgb, var(--bg) 72%, transparent);
 }
 .event-dock .btn svg { width: 16px; height: 16px; flex: none; }
-.event-dock .via { font-weight: 500; opacity: 0.78; }
 
 /* ------------------------------------------------------------------ */
 /* Footer                                                             */
