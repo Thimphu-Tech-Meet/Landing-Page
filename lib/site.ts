@@ -7,7 +7,9 @@ export const site = {
   contributing:
     "https://github.com/Thimphu-Tech-Meet/Landing-Page/blob/main/CONTRIBUTING.md",
   newIssue: "https://github.com/Thimphu-Tech-Meet/Landing-Page/issues/new",
-  email: "keldendraduldorji@gmail.com",
+  email: "hi@thimphutechmeet.com",
+  /** Anyone can propose and host an event here; no committee, no forms. */
+  luma: "https://luma.com/thimphutechmeet",
 } as const;
 
 /** The standing weekly meetup. Shown when no dated meetup is scheduled. */

@@ -14,9 +14,14 @@ export function SiteHeader() {
         </Link>
         <NavLinks />
         <div className="hdr-actions">
-          <Link className="btn small primary hdr-cta" href="/contribute">
+          <a
+            className="btn small primary hdr-cta"
+            href={site.contributing}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Write an idea
-          </Link>
+          </a>
           <ThemeToggle />
         </div>
       </div>

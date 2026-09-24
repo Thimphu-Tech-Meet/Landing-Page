@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site-header";
 import { Sponsors } from "@/components/sponsors";
 import { SiteFooter } from "@/components/site-footer";
+import { EventDock } from "@/components/event-dock";
 import { themeInitScript } from "@/components/theme-toggle";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -74,6 +75,7 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <Sponsors />
+        <EventDock />
         <SiteFooter />
         <Analytics />
       </body>

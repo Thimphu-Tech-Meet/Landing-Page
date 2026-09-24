@@ -721,6 +721,7 @@ section + section { border-top: 1px solid var(--line-2); }
   border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
 }
 .note.plain { background: var(--surface); border-color: var(--line); }
+.note.solo { margin-top: 40px; }
 .note h3 { font-size: 20px; margin-bottom: 8px; }
 .note p { margin: 0; font-size: 16px; color: var(--ink-2); }
 .note a { color: var(--accent); font-family: var(--display); font-weight: 600; }
@@ -777,14 +778,50 @@ section + section { border-top: 1px solid var(--line-2); }
 .sponsors .become:hover { background: var(--accent-soft); }
 
 /* ------------------------------------------------------------------ */
+/* Event dock                                                         */
+/* ------------------------------------------------------------------ */
+/*
+ * A sticky (not fixed) bar: it rides along the bottom of the viewport
+ * while the reader scrolls, then settles into its own place in the flow,
+ * straddling the footer's top border, once they reach the end of the page
+ * (the negative margin pulls it onto the line; the footer's top padding
+ * makes room). The wrapper is click-through so only the pill is interactive.
+ */
+.event-dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  margin-bottom: -34px;
+  pointer-events: none;
+}
+.event-dock .btn {
+  pointer-events: auto;
+  padding: 11px 18px;
+  box-shadow: var(--shadow), 0 0 0 5px var(--bg);
+}
+.event-dock .btn svg { width: 16px; height: 16px; flex: none; }
+
+/* ------------------------------------------------------------------ */
 /* Footer                                                             */
 /* ------------------------------------------------------------------ */
-footer.site { padding-block: 32px 40px; border-top: 1px solid var(--line-2); }
-footer.site .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
-footer.site .links { display: flex; gap: 20px; font-family: var(--display); font-size: 14px; font-weight: 600; color: var(--ink-2); flex-wrap: wrap; }
-footer.site .links a:hover { color: var(--accent); }
+footer.site { padding-block: 58px 36px; border-top: 1px solid var(--line-2); }
+footer.site .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px 24px; }
 footer.site .made { font-size: 15px; color: var(--ink-3); }
-footer.site .built { margin-left: auto; font-size: 15px; color: var(--ink-3); white-space: nowrap; }
+footer.site .contact { display: flex; gap: 8px; justify-content: center; }
+footer.site .contact a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--ink);
+  padding: 8px 14px 8px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+footer.site .contact a.icon-only { padding: 8px 11px; }
+footer.site .contact a:hover { border-color: var(--accent); color: var(--accent); }
+footer.site .contact svg { width: 16px; height: 16px; flex: none; color: var(--ink-2); }
+footer.site .contact a:hover svg { color: inherit; }
+footer.site .built { font-size: 15px; color: var(--ink-3); text-align: right; white-space: nowrap; }
 footer.site .built a { color: var(--ink-2); font-family: var(--display); font-weight: 600; }
 footer.site .built a:hover { color: var(--accent); }
 
@@ -832,6 +869,9 @@ footer.site .built a:hover { color: var(--accent); }
   .brand .name { display: none; }
   .brand .sub { display: inline; font-size: 16px; }
   .hdr-cta { display: none; }
+  /* Footer stacks: tagline, pills, credit; all centred. */
+  footer.site .wrap { grid-template-columns: 1fr; text-align: center; gap: 14px; }
+  footer.site .built { text-align: center; }
   /* Keep the decorative corner art clear of the card headings on phones. */
   .door .art { width: 110px; height: 110px; opacity: 0.45; }
   .door h3 { font-size: 26px; }
