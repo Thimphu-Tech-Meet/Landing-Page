@@ -783,8 +783,9 @@ section + section { border-top: 1px solid var(--line-2); }
 /*
  * A sticky (not fixed) bar: it rides along the bottom of the viewport
  * while the reader scrolls, then settles into its own place in the flow,
- * directly above the footer, once they reach the end of the page. The
- * wrapper is click-through so only the pill itself is interactive.
+ * straddling the footer's top border, once they reach the end of the page
+ * (the negative margin pulls it onto the line; the footer's top padding
+ * makes room). The wrapper is click-through so only the pill is interactive.
  */
 .event-dock {
   position: sticky;
@@ -793,28 +794,40 @@ section + section { border-top: 1px solid var(--line-2); }
   display: flex;
   justify-content: center;
   padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  margin-bottom: -34px;
   pointer-events: none;
 }
 .event-dock .btn {
   pointer-events: auto;
   padding: 11px 18px;
-  box-shadow: var(--shadow), 0 0 0 4px color-mix(in srgb, var(--bg) 72%, transparent);
+  box-shadow: var(--shadow), 0 0 0 5px var(--bg);
 }
 .event-dock .btn svg { width: 16px; height: 16px; flex: none; }
 
 /* ------------------------------------------------------------------ */
 /* Footer                                                             */
 /* ------------------------------------------------------------------ */
-footer.site { padding-block: 32px 40px; border-top: 1px solid var(--line-2); }
-footer.site .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
-footer.site .links { display: flex; gap: 20px; font-family: var(--display); font-size: 14px; font-weight: 600; color: var(--ink-2); flex-wrap: wrap; }
-footer.site .links a:hover { color: var(--accent); }
-footer.site .links .icon { display: inline-flex; align-items: center; }
-footer.site .links .icon svg { width: 18px; height: 18px; }
-footer.site .made { font-size: 15px; color: var(--ink-3); }
-footer.site .built { margin-left: auto; font-size: 15px; color: var(--ink-3); white-space: nowrap; }
-footer.site .built a { color: var(--ink-2); font-family: var(--display); font-weight: 600; }
-footer.site .built a:hover { color: var(--accent); }
+footer.site { padding-block: 58px 36px; border-top: 1px solid var(--line-2); }
+footer.site .wrap { display: grid; gap: 22px; }
+footer.site .row { display: flex; justify-content: space-between; align-items: center; gap: 16px 28px; flex-wrap: wrap; }
+footer.site .made { font-size: 16px; color: var(--ink-2); }
+footer.site .made b { font-family: var(--display); font-weight: 700; color: var(--ink); margin-right: 6px; }
+footer.site .contact { display: flex; gap: 8px; flex-wrap: wrap; }
+footer.site .contact a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--ink);
+  padding: 8px 14px 8px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+footer.site .contact a.icon-only { padding: 8px 11px; }
+footer.site .contact a:hover { border-color: var(--accent); color: var(--accent); }
+footer.site .contact svg { width: 16px; height: 16px; flex: none; color: var(--ink-2); }
+footer.site .contact a:hover svg { color: inherit; }
+footer.site .rule { height: 1px; background: var(--line-2); }
+footer.site .meta { font-size: 14px; color: var(--ink-3); }
+footer.site .meta a { color: var(--ink-2); font-family: var(--display); font-weight: 600; }
+footer.site .meta a:hover { color: var(--accent); }
+footer.site .built { white-space: nowrap; }
 
 /* ------------------------------------------------------------------ */
 /* Not found                                                          */
@@ -860,6 +873,10 @@ footer.site .built a:hover { color: var(--accent); }
   .brand .name { display: none; }
   .brand .sub { display: inline; font-size: 16px; }
   .hdr-cta { display: none; }
+  footer.site .row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  footer.site .contact { width: 100%; }
+  footer.site .contact a { flex: 1; justify-content: center; }
+  footer.site .contact a.icon-only { flex: 0 0 auto; }
   /* Keep the decorative corner art clear of the card headings on phones. */
   .door .art { width: 110px; height: 110px; opacity: 0.45; }
   .door h3 { font-size: 26px; }
