@@ -777,6 +777,32 @@ section + section { border-top: 1px solid var(--line-2); }
 .sponsors .become:hover { background: var(--accent-soft); }
 
 /* ------------------------------------------------------------------ */
+/* Event dock                                                         */
+/* ------------------------------------------------------------------ */
+/*
+ * A sticky (not fixed) bar: it rides along the bottom of the viewport
+ * while the reader scrolls, then settles into its own place in the flow,
+ * directly above the footer, once they reach the end of the page. The
+ * wrapper is click-through so only the pill itself is interactive.
+ */
+.event-dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+.event-dock .btn {
+  pointer-events: auto;
+  padding: 11px 18px;
+  box-shadow: var(--shadow), 0 0 0 4px color-mix(in srgb, var(--bg) 72%, transparent);
+}
+.event-dock .btn svg { width: 16px; height: 16px; flex: none; }
+.event-dock .via { font-weight: 500; opacity: 0.78; }
+
+/* ------------------------------------------------------------------ */
 /* Footer                                                             */
 /* ------------------------------------------------------------------ */
 footer.site { padding-block: 32px 40px; border-top: 1px solid var(--line-2); }
