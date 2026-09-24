@@ -783,6 +783,8 @@ footer.site { padding-block: 32px 40px; border-top: 1px solid var(--line-2); }
 footer.site .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
 footer.site .links { display: flex; gap: 20px; font-family: var(--display); font-size: 14px; font-weight: 600; color: var(--ink-2); flex-wrap: wrap; }
 footer.site .links a:hover { color: var(--accent); }
+footer.site .links .icon { display: inline-flex; align-items: center; }
+footer.site .links .icon svg { width: 18px; height: 18px; }
 footer.site .made { font-size: 15px; color: var(--ink-3); }
 footer.site .built { margin-left: auto; font-size: 15px; color: var(--ink-3); white-space: nowrap; }
 footer.site .built a { color: var(--ink-2); font-family: var(--display); font-weight: 600; }
