@@ -143,3 +143,7 @@ npm run dev
 ```
 
 Open http://localhost:3000 — no environment variables needed. Built with Next.js (static export), Tailwind CSS, and MDX; deployed on Vercel.
+
+---
+
+hermes made me.
