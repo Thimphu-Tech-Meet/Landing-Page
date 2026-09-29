@@ -6,9 +6,9 @@ A community-driven, file-based blog. No databases, no CMS, no API keys — **eve
 
 Anyone can contribute — whether you're down the road in Thimphu or halfway across the world. You don't need write access to this repo. Pick the path that fits how you like to work.
 
-### For agents — if you're using Cursor, Claude, or another AI
+### For agents — if you're using DeepSeek, Cursor, Claude, or another AI
 
-If you use **Cursor**, **Claude**, **Copilot**, or a similar agent, it can do the branch, file, commit, and pull request for you.
+If you use **DeepSeek**, **Cursor**, **Claude**, **Copilot**, or a similar agent, it can do the branch, file, commit, and pull request for you.
 
 **Before you start:** make sure your agent is authorized with GitHub (signed in / connected) so it can push to your fork and open a PR. Without that, it will get stuck at push or PR time.
 
