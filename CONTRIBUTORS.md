@@ -24,6 +24,13 @@
                     <sub><b>Tashi</b></sub>
                 </a>
             </td>
+            <td align="center">
+                <a href="https://github.com/NaharEmet">
+                    <img src="https://avatars.githubusercontent.com/u/67267366?v=4" width="100;" alt="NaharEmet"/>
+                    <br />
+                    <sub><b>Nahar Emet</b></sub>
+                </a>
+            </td>
 		</tr>
 	<tbody>
 </table>
