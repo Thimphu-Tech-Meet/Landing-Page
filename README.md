@@ -2,9 +2,21 @@
 
 A community-driven, file-based blog. No databases, no CMS, no API keys — **every post is a markdown file, and every contribution is a pull request.**
 
-## Using Cursor, Claude, or another AI agent?
+## How to contribute
 
-We want anyone to contribute — irrespective of where they are, and irrespective of whether they write every git command by hand. If you use **Cursor**, **Claude**, **Copilot**, or any other AI coding agent, fork the repo first (step 1 below), open your fork in the agent, then paste a prompt like this:
+Anyone can contribute — whether you're down the road in Thimphu or halfway across the world. You don't need write access to this repo. Pick the path that fits how you like to work.
+
+### For agents — if you're using Cursor, Claude, or another AI
+
+If you use **Cursor**, **Claude**, **Copilot**, or a similar agent, it can do the branch, file, commit, and pull request for you.
+
+**Before you start:** make sure your agent is authorized with GitHub (signed in / connected) so it can push to your fork and open a PR. Without that, it will get stuck at push or PR time.
+
+Then:
+
+1. [Fork this repository](https://github.com/Thimphu-Tech-Meet/Landing-Page/fork) into your account.
+2. Open your fork in the agent.
+3. Paste a prompt like the one below (swap in your own idea):
 
 ```text
 Create a new PR branch feature/<short-name-for-my-idea>.
@@ -23,15 +35,15 @@ When you are done, open a pull request against Thimphu-Tech-Meet/Landing-Page
 with base branch main. Give the PR a short title like "Add post: <short-name>".
 ```
 
-Replace `<short-name-for-my-idea>` and `<paste your idea here>` with your own details. The agent should handle the branch, the markdown file, the commit, and the PR — the same flow as the manual steps below.
+That's it. Prefer to do it yourself by hand? Use the steps below.
 
-## Contribute in 6 steps
+### For programmers — if you want to open the PR manually
 
-You do not need write access to this repository. Fork it, make your change on your copy, and open a pull request. That is the standard open-source workflow, and it works the same whether you are in Thimphu or halfway across the world.
+Same outcome, just you run the git commands. Fork → clone → branch → add a markdown file → push → open a PR.
 
-### 1. Fork this repository
+#### 1. Fork this repository
 
-Click the button below to create your own copy of the repo under your GitHub account (or use the **Fork** button on the [repository page](https://github.com/Thimphu-Tech-Meet/Landing-Page)):
+Click the button below to create your own copy under your GitHub account (or hit **Fork** on the [repository page](https://github.com/Thimphu-Tech-Meet/Landing-Page)):
 
 [![Fork Thimphu-Tech-Meet/Landing-Page](https://img.shields.io/badge/Fork%20this%20repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Thimphu-Tech-Meet/Landing-Page/fork)
 
@@ -41,13 +53,13 @@ Click the button below to create your own copy of the repo under your GitHub acc
 <br />
 
 1. Open the [repository](https://github.com/Thimphu-Tech-Meet/Landing-Page).
-2. Click **Fork** in the top-right (same action as the button above).
+2. Click **Fork** in the top-right (same as the button above).
 3. Confirm — GitHub creates `https://github.com/<your-username>/Landing-Page`.
 
-See GitHub’s short guide (with screenshots): [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo).
+GitHub’s short guide (with screenshots): [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo).
 </details>
 
-### 2. Clone your fork
+#### 2. Clone your fork
 
 Clone **your** fork (replace `<your-username>` with your GitHub username):
 
@@ -56,7 +68,7 @@ git clone https://github.com/<your-username>/Landing-Page.git
 cd Landing-Page
 ```
 
-### 3. Create a branch
+#### 3. Create a branch
 
 ```bash
 git checkout -b feature/<feature-name>
@@ -64,7 +76,7 @@ git checkout -b feature/<feature-name>
 
 Branch names **must** follow the `feature/<feature-name>` pattern — e.g. `feature/my-great-idea`. Never commit directly to `main`.
 
-### 4. Add one markdown file to `content/`
+#### 4. Add one markdown file to `content/`
 
 Create a new file in the `content` folder. Name it with lowercase hyphenated words — the filename becomes your post's URL (`content/my-great-idea.md` → `/blog/my-great-idea`). Paste this template and fill it in:
 
@@ -85,7 +97,7 @@ Write your idea here using normal markdown.
 
 Meetups are recorded the same way: one markdown file per session in `content/meetups/`. See [CONTRIBUTING.md](CONTRIBUTING.md#meetups-organisers) for the fields.
 
-### 5. Commit and push your branch
+#### 5. Commit and push your branch
 
 ```bash
 git add content/my-great-idea.md
@@ -93,7 +105,7 @@ git commit -m "Add post: my-great-idea"
 git push -u origin feature/<feature-name>
 ```
 
-### 6. Open a pull request
+#### 6. Open a pull request
 
 Go to the [upstream repository on GitHub](https://github.com/Thimphu-Tech-Meet/Landing-Page) — GitHub will show a **Compare & pull request** button for your pushed branch. Give the PR a short title like `Add post: my-great-idea`, set the base branch to `main`, and submit.
 
