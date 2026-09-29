@@ -2,19 +2,46 @@
 
 A community-driven, file-based blog. No databases, no CMS, no API keys — **every post is a markdown file, and every contribution is a pull request.**
 
-## Contribute in 4 steps
+## Contribute in 6 steps
 
-### 1. Clone the repo and create a branch
+We want anyone to contribute — irrespective of where they are. You do not need write access to this repository. Fork it, make your change on your copy, and open a pull request. That is the standard open-source workflow, and it works the same whether you are in Thimphu or halfway across the world.
+
+### 1. Fork this repository
+
+Click the button below to create your own copy of the repo under your GitHub account (or use the **Fork** button on the [repository page](https://github.com/Thimphu-Tech-Meet/Landing-Page)):
+
+[![Fork Thimphu-Tech-Meet/Landing-Page](https://img.shields.io/badge/Fork%20this%20repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Thimphu-Tech-Meet/Landing-Page/fork)
+
+<details>
+<summary>Need a visual walkthrough?</summary>
+
+<br />
+
+1. Open the [repository](https://github.com/Thimphu-Tech-Meet/Landing-Page).
+2. Click **Fork** in the top-right (same action as the button above).
+3. Confirm — GitHub creates `https://github.com/<your-username>/Landing-Page`.
+
+See GitHub’s short guide (with screenshots): [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo).
+</details>
+
+### 2. Clone your fork
+
+Clone **your** fork (replace `<your-username>` with your GitHub username):
 
 ```bash
-git clone https://github.com/Thimphu-Tech-Meet/Landing-Page.git
+git clone https://github.com/<your-username>/Landing-Page.git
 cd Landing-Page
+```
+
+### 3. Create a branch
+
+```bash
 git checkout -b feature/<feature-name>
 ```
 
 Branch names **must** follow the `feature/<feature-name>` pattern — e.g. `feature/my-great-idea`. Never commit directly to `main`.
 
-### 2. Add one markdown file to `content/`
+### 4. Add one markdown file to `content/`
 
 Create a new file in the `content` folder. Name it with lowercase hyphenated words — the filename becomes your post's URL (`content/my-great-idea.md` → `/blog/my-great-idea`). Paste this template and fill it in:
 
@@ -35,17 +62,19 @@ Write your idea here using normal markdown.
 
 Meetups are recorded the same way: one markdown file per session in `content/meetups/`. See [CONTRIBUTING.md](CONTRIBUTING.md#meetups-organisers) for the fields.
 
-### 3. Commit and push your branch
+### 5. Commit and push your branch
 
 ```bash
 git add content/my-great-idea.md
 git commit -m "Add post: my-great-idea"
-git push -u origin feature/my-great-idea
+git push -u origin feature/<feature-name>
 ```
 
-### 4. Open a pull request
+### 6. Open a pull request
 
-Go to the [repository on GitHub](https://github.com/Thimphu-Tech-Meet/Landing-Page) — GitHub will show a **Compare & pull request** button for your pushed branch. Give the PR a short title like `Add post: my-great-idea`, set the base branch to `main`, and submit.
+Go to the [upstream repository on GitHub](https://github.com/Thimphu-Tech-Meet/Landing-Page) — GitHub will show a **Compare & pull request** button for your pushed branch. Give the PR a short title like `Add post: my-great-idea`, set the base branch to `main`, and submit.
+
+Once you open the PR, our automated Vercel integration posts a live preview link in the pull request comments so you (and reviewers) can see your change on a deployed site right away.
 
 > **Review & approval:** for now, pull requests are reviewed and approved by **Kelden**. Maintainer roles will be assigned to more community members soon. Once your PR is merged, the site redeploys automatically with your post live.
 
