@@ -2,9 +2,32 @@
 
 A community-driven, file-based blog. No databases, no CMS, no API keys — **every post is a markdown file, and every contribution is a pull request.**
 
+## Using Cursor, Claude, or another AI agent?
+
+We want anyone to contribute — irrespective of where they are, and irrespective of whether they write every git command by hand. If you use **Cursor**, **Claude**, **Copilot**, or any other AI coding agent, fork the repo first (step 1 below), open your fork in the agent, then paste a prompt like this:
+
+```text
+Create a new PR branch feature/<short-name-for-my-idea>.
+
+Add one markdown post under content/ following the frontmatter template in README.md.
+Fill in title, description, author, github, and today's date (YYYY-MM-DD).
+Write the post body in normal markdown — here is what I want to say:
+
+<paste your idea here>
+
+Keep the contribution rules from the README: branch names must follow
+feature/<feature-name>, never commit directly to main, and push with
+git push -u origin feature/<feature-name>.
+
+When you are done, open a pull request against Thimphu-Tech-Meet/Landing-Page
+with base branch main. Give the PR a short title like "Add post: <short-name>".
+```
+
+Replace `<short-name-for-my-idea>` and `<paste your idea here>` with your own details. The agent should handle the branch, the markdown file, the commit, and the PR — the same flow as the manual steps below.
+
 ## Contribute in 6 steps
 
-We want anyone to contribute — irrespective of where they are. You do not need write access to this repository. Fork it, make your change on your copy, and open a pull request. That is the standard open-source workflow, and it works the same whether you are in Thimphu or halfway across the world.
+You do not need write access to this repository. Fork it, make your change on your copy, and open a pull request. That is the standard open-source workflow, and it works the same whether you are in Thimphu or halfway across the world.
 
 ### 1. Fork this repository
 
