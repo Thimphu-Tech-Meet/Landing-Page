@@ -11,10 +11,10 @@ Artificial life is easiest to understand when you can watch it move.
 This small model starts with simple local rules: agents wander, sense nearby food, spend energy to move, eat to survive, reproduce when they have enough energy, and pass slightly mutated traits to their children.
 
 <div className="alife-demo">
-  <iframe title="Evolutionary Food Race interactive simulation" src="/evolutionary-food-race.html" loading="lazy" />
+  <iframe title="Evolutionary Food Race interactive simulation" src="/evolutionary-food-race" loading="lazy" />
 </div>
 
-[Open the interactive model in a full page](/evolutionary-food-race.html).
+[Open the interactive model in a full page](/evolutionary-food-race).
 
 This was made by **Sakana AI through Hermes** as a small demo for exploring artificial life with the Thimphu Tech Meet community.
 
