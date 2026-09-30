@@ -627,6 +627,24 @@ section + section { border-top: 1px solid var(--line-2); }
 .article th, .article td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
 .article strong { font-weight: 600; }
 
+.alife-demo {
+  width: min(1120px, calc(100vw - 40px));
+  margin: 8px 0 28px 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #07090f;
+  box-shadow: var(--shadow);
+}
+.alife-demo iframe {
+  display: block;
+  width: 100%;
+  height: min(820px, 82vh);
+  min-height: 620px;
+  border: 0;
+}
+
 .linked {
   display: flex;
   flex-wrap: wrap;
