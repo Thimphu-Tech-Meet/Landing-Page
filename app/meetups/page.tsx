@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllMeetups, type Meetup } from "@/lib/meetups";
 import { dateParts } from "@/lib/format";
 import { PhotoTile } from "@/components/photo-tile";
-import { mdxComponents } from "@/components/mdx-components";
+import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { site, weekly } from "@/lib/site";
 import { VenueCard } from "@/components/venue";
 
@@ -116,7 +116,7 @@ function MeetupEvent({ meetup }: { meetup: Meetup }) {
         <h3>{title}</h3>
         {meetup.content && (
           <div className="body">
-            <MDXRemote source={meetup.content} components={mdxComponents} />
+            <MDXRemote source={meetup.content} components={mdxComponents} options={mdxOptions} />
           </div>
         )}
         {talks.length > 0 && (
