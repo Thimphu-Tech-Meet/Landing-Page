@@ -1,5 +1,15 @@
 import Image from "next/image";
 import type { MDXComponents } from "mdx/types";
+import remarkGfm from "remark-gfm";
+
+/**
+ * MDX on its own only speaks CommonMark. remark-gfm adds GitHub-flavoured
+ * markdown — tables, task lists, strikethrough, autolinks — which
+ * contributors naturally reach for. Pass as `options` to every MDXRemote.
+ */
+export const mdxOptions = {
+  mdxOptions: { remarkPlugins: [remarkGfm] },
+};
 
 /**
  * Standard markdown images (`![alt](src)`) are swapped for next/image.

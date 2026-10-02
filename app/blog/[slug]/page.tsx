@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug, isEventPost } from "@/lib/posts";
-import { mdxComponents } from "@/components/mdx-components";
+import { mdxComponents, mdxOptions } from "@/components/mdx-components";
 import { formatDate } from "@/lib/format";
 
 interface BlogPostPageProps {
@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="prose">
             {/* MDXRemote (RSC flavour) renders the markdown server-side.
                 Typography comes from `.article .prose` in globals.css. */}
-            <MDXRemote source={post.content} components={mdxComponents} />
+            <MDXRemote source={post.content} components={mdxComponents} options={mdxOptions} />
           </div>
 
           <div className="author">
