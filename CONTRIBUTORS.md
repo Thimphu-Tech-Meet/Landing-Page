@@ -38,6 +38,13 @@
                     <sub><b>Ayush Kumar Pandey</b></sub>
                 </a>
             </td>
+            <td align="center">
+                <a href="https://github.com/Nashidev77">
+                    <img src="https://avatars.githubusercontent.com/u/322254020?v=4" width="100;" alt="Nashidev77"/>
+                    <br />
+                    <sub><b>Nashidev77</b></sub>
+                </a>
+            </td>
 		</tr>
 	<tbody>
 </table>
