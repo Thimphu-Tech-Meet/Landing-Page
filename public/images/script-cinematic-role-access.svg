@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="Planned role check: the CEO gets full access including profits, staff get only information relevant to their role, customers get product information only">
+<style>
+  .bg{fill:#fbfbf9} .panel{fill:#f2f3f0;stroke:#d9dcd8;stroke-width:1.5}
+  .chip{fill:#fbfbf9;stroke:#d9dcd8;stroke-width:1}
+  .hot{fill:#f6e3df;stroke:#b5301f;stroke-width:1.5}
+  .ink{fill:#171a1f} .ink2{fill:#4b525c} .ink3{fill:#7c838c} .acc{fill:#b5301f}
+  .axis{stroke:#d9dcd8;stroke-width:1}
+  .wire{stroke:#4b525c;stroke-width:2;fill:none} .wire-acc{stroke:#b5301f;stroke-width:2.5;fill:none}
+  text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  @media (prefers-color-scheme: dark){
+    .bg{fill:#1a1e24} .panel{fill:#12151a;stroke:#2c323a} .chip{fill:#1a1e24;stroke:#2c323a}
+    .hot{fill:#3a1f1b;stroke:#e0553f}
+    .ink{fill:#eeefea} .ink2{fill:#aeb4bc} .ink3{fill:#8a919a} .acc{fill:#e0553f}
+    .axis{stroke:#2c323a}
+    .wire{stroke:#aeb4bc} .wire-acc{stroke:#e0553f}
+  }
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink2"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="acc"/></marker>
+</defs>
+
+<rect class="bg" x="0" y="0" width="1200" height="520"/>
+<text x="40" y="52" class="ink" font-size="26" font-weight="800">Next: answers that depend on who's asking</text>
+<text x="40" y="80" class="ink2" font-size="15">Planned for the real project with Ayush Kumar Pandey. Same agent, different access for each role.</text>
+
+<rect class="panel" x="40" y="222" width="200" height="104" rx="14"/>
+<text x="58" y="256" class="ink" font-size="17" font-weight="700">Question</text>
+<text x="58" y="280" class="ink2" font-size="13.5">plus who is asking:</text>
+<text x="58" y="298" class="ink2" font-size="13.5">CEO, staff or customer</text>
+
+<rect class="hot" x="300" y="222" width="200" height="104" rx="12"/>
+<text x="318" y="256" class="ink" font-size="17" font-weight="700">Role check</text>
+<text x="318" y="280" class="ink2" font-size="13.5">what is this person</text>
+<text x="318" y="298" class="ink2" font-size="13.5">allowed to know?</text>
+<path class="wire" d="M240 274 H296" marker-end="url(#ah)"/>
+
+<path class="wire-acc" d="M500 260 H540 V160 H596" marker-end="url(#aha)"/>
+<path class="wire" d="M500 274 H596" marker-end="url(#ah)"/>
+<path class="wire" d="M500 288 H540 V388 H596" marker-end="url(#ah)"/>
+
+<rect class="chip" x="600" y="118" width="560" height="84" rx="12"/>
+<text x="622" y="152" class="ink" font-size="17" font-weight="700">CEO</text>
+<text x="622" y="178" class="ink2" font-size="14">Full access, including profits and other sensitive figures</text>
+<text x="1140" y="152" class="acc mono" font-size="12.5" font-weight="600" text-anchor="end">FULL ACCESS</text>
+
+<rect class="chip" x="600" y="232" width="560" height="84" rx="12"/>
+<text x="622" y="266" class="ink" font-size="17" font-weight="700">Staff</text>
+<text x="622" y="292" class="ink2" font-size="14">Only information relevant to their role; other confidential data is refused</text>
+<text x="1140" y="266" class="ink3 mono" font-size="12.5" font-weight="600" text-anchor="end">ROLE-SPECIFIC</text>
+
+<rect class="chip" x="600" y="346" width="560" height="84" rx="12"/>
+<text x="622" y="380" class="ink" font-size="17" font-weight="700">Customer</text>
+<text x="622" y="406" class="ink2" font-size="14">Product information only; batch records and internal data are refused</text>
+<text x="1140" y="380" class="ink3 mono" font-size="12.5" font-weight="600" text-anchor="end">PRODUCTS ONLY</text>
+
+<line class="axis" x1="40" y1="460" x2="1160" y2="460"/>
+<text x="40" y="494" class="ink2" font-size="15">The prototype already refused confidential questions. Roles turn that into a rule based on who is asking.</text>
+</svg>
