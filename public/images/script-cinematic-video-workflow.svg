@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-label="Before: a full AI script sent as one long prompt gave a muddled clip and burned credits on retries. After: shot list, keyframe still, animate, harvest the best seconds, edit in CapCut">
+<style>
+  .bg{fill:#fbfbf9} .panel{fill:#f2f3f0;stroke:#d9dcd8;stroke-width:1.5}
+  .chip{fill:#fbfbf9;stroke:#d9dcd8;stroke-width:1}
+  .hot{fill:#f6e3df;stroke:#b5301f;stroke-width:1.5}
+  .ink{fill:#171a1f} .ink2{fill:#4b525c} .ink3{fill:#7c838c} .acc{fill:#b5301f}
+  .axis{stroke:#d9dcd8;stroke-width:1}
+  .wire{stroke:#4b525c;stroke-width:2;fill:none} .wire-acc{stroke:#b5301f;stroke-width:2.5;fill:none}
+  .wire-dead{stroke:#7c838c;stroke-width:2;fill:none;stroke-dasharray:7 6}
+  text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  @media (prefers-color-scheme: dark){
+    .bg{fill:#1a1e24} .panel{fill:#12151a;stroke:#2c323a} .chip{fill:#1a1e24;stroke:#2c323a}
+    .hot{fill:#3a1f1b;stroke:#e0553f}
+    .ink{fill:#eeefea} .ink2{fill:#aeb4bc} .ink3{fill:#8a919a} .acc{fill:#e0553f}
+    .axis{stroke:#2c323a}
+    .wire{stroke:#aeb4bc} .wire-acc{stroke:#e0553f} .wire-dead{stroke:#8a919a}
+  }
+</style>
+<defs>
+  <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="acc"/></marker>
+  <marker id="ahd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink3"/></marker>
+</defs>
+
+<rect class="bg" x="0" y="0" width="1200" height="540"/>
+<text x="40" y="52" class="ink" font-size="26" font-weight="800">From one big prompt to a shot-by-shot workflow</text>
+<text x="40" y="80" class="ink2" font-size="15">A video model makes one short clip at a time, so the workflow has to work one shot at a time too.</text>
+
+<text x="40" y="128" class="ink3 mono" font-size="12.5" font-weight="600">BEFORE</text>
+<rect class="chip" x="40" y="142" width="250" height="80" rx="12"/>
+<text x="60" y="174" class="ink" font-size="16" font-weight="700">Full AI script</text>
+<text x="60" y="198" class="ink3" font-size="13.5">every shot, light and move</text>
+<rect class="chip" x="350" y="142" width="250" height="80" rx="12"/>
+<text x="370" y="174" class="ink" font-size="16" font-weight="700">One long prompt</text>
+<text x="370" y="198" class="ink3" font-size="13.5">pasted into Higgsfield</text>
+<rect class="chip" x="660" y="142" width="250" height="80" rx="12"/>
+<text x="680" y="174" class="ink" font-size="16" font-weight="700">Muddled clip</text>
+<text x="680" y="198" class="ink3" font-size="13.5">worse than my own attempt</text>
+<path class="wire-dead" d="M290 182 H346" marker-end="url(#ahd)"/>
+<path class="wire-dead" d="M600 182 H656" marker-end="url(#ahd)"/>
+<path class="wire-dead" d="M910 182 H960 V252 H475 V226" marker-end="url(#ahd)"/>
+<text x="980" y="178" class="ink3" font-size="12.5">tweak the wording,</text>
+<text x="980" y="195" class="ink3" font-size="12.5">retry: more credits</text>
+
+<text x="40" y="304" class="acc mono" font-size="12.5" font-weight="600">AFTER HIGGSFIELD'S FREE COURSES</text>
+<rect class="chip" x="40" y="318" width="196" height="104" rx="12"/>
+<text x="58" y="344" class="ink3 mono" font-size="12">01</text>
+<text x="58" y="368" class="ink" font-size="16" font-weight="700">Shot list</text>
+<text x="58" y="390" class="ink2" font-size="13.5">one subject and one</text>
+<text x="58" y="408" class="ink2" font-size="13.5">move per prompt</text>
+<rect class="chip" x="266" y="318" width="196" height="104" rx="12"/>
+<text x="284" y="344" class="ink3 mono" font-size="12">02</text>
+<text x="284" y="368" class="ink" font-size="16" font-weight="700">Keyframe still</text>
+<text x="284" y="390" class="ink2" font-size="13.5">lock the look and label</text>
+<text x="284" y="408" class="ink2" font-size="13.5">before any motion</text>
+<rect class="chip" x="492" y="318" width="196" height="104" rx="12"/>
+<text x="510" y="344" class="ink3 mono" font-size="12">03</text>
+<text x="510" y="368" class="ink" font-size="16" font-weight="700">Animate</text>
+<text x="510" y="390" class="ink2" font-size="13.5">6 generations</text>
+<text x="510" y="408" class="ink2" font-size="13.5">in Higgsfield</text>
+<rect class="chip" x="718" y="318" width="196" height="104" rx="12"/>
+<text x="736" y="344" class="ink3 mono" font-size="12">04</text>
+<text x="736" y="368" class="ink" font-size="16" font-weight="700">Harvest</text>
+<text x="736" y="390" class="ink2" font-size="13.5">keep the best seconds</text>
+<text x="736" y="408" class="ink2" font-size="13.5">of each generation</text>
+<rect class="hot" x="944" y="318" width="216" height="104" rx="12"/>
+<text x="962" y="344" class="acc mono" font-size="12">05</text>
+<text x="962" y="368" class="ink" font-size="16" font-weight="700">Edit in CapCut</text>
+<text x="962" y="390" class="ink2" font-size="13.5">trim and assemble</text>
+<text x="962" y="408" class="acc" font-size="13.5" font-weight="600">one usable sequence</text>
+<path class="wire-acc" d="M236 370 H262" marker-end="url(#aha)"/>
+<path class="wire-acc" d="M462 370 H488" marker-end="url(#aha)"/>
+<path class="wire-acc" d="M688 370 H714" marker-end="url(#aha)"/>
+<path class="wire-acc" d="M914 370 H940" marker-end="url(#aha)"/>
+
+<line class="axis" x1="40" y1="462" x2="1160" y2="462"/>
+<text x="40" y="500" class="ink2" font-size="15">2 days  ·  2,567 of 6,000 Ultra-plan credits  ·  6 generations cut down to one sequence</text>
+</svg>

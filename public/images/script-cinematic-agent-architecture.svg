@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-label="A spoken question goes to the Anam AI live avatar, relevant passages are retrieved from the RAG knowledge base, GPT Terra writes the answer, and ElevenLabs speaks it back through the avatar">
+<style>
+  .bg{fill:#fbfbf9} .panel{fill:#f2f3f0;stroke:#d9dcd8;stroke-width:1.5}
+  .chip{fill:#fbfbf9;stroke:#d9dcd8;stroke-width:1}
+  .hot{fill:#f6e3df;stroke:#b5301f;stroke-width:1.5}
+  .ink{fill:#171a1f} .ink2{fill:#4b525c} .ink3{fill:#7c838c} .acc{fill:#b5301f}
+  .axis{stroke:#d9dcd8;stroke-width:1}
+  .wire{stroke:#4b525c;stroke-width:2;fill:none} .wire-acc{stroke:#b5301f;stroke-width:2.5;fill:none}
+  .wire-dead{stroke:#7c838c;stroke-width:2;fill:none;stroke-dasharray:7 6}
+  text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  @media (prefers-color-scheme: dark){
+    .bg{fill:#1a1e24} .panel{fill:#12151a;stroke:#2c323a} .chip{fill:#1a1e24;stroke:#2c323a}
+    .hot{fill:#3a1f1b;stroke:#e0553f}
+    .ink{fill:#eeefea} .ink2{fill:#aeb4bc} .ink3{fill:#8a919a} .acc{fill:#e0553f}
+    .axis{stroke:#2c323a}
+    .wire{stroke:#aeb4bc} .wire-acc{stroke:#e0553f} .wire-dead{stroke:#8a919a}
+  }
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink2"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="acc"/></marker>
+  <marker id="ahd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ink3"/></marker>
+</defs>
+
+<rect class="bg" x="0" y="0" width="1200" height="540"/>
+<text x="40" y="52" class="ink" font-size="26" font-weight="800">How the Q&amp;A agent answers a question</text>
+<text x="40" y="80" class="ink2" font-size="15">A live avatar on top, a RAG knowledge base underneath. Answers come from our own documents, not guesses.</text>
+
+<path class="wire" d="M1070 170 V136 H360 V166" marker-end="url(#ah)"/>
+<text x="560" y="127" class="ink3" font-size="12.5">answer spoken back, live, through the avatar</text>
+
+<rect class="panel" x="40" y="170" width="170" height="104" rx="14"/>
+<text x="58" y="204" class="ink" font-size="17" font-weight="700">Someone asks</text>
+<text x="58" y="228" class="ink2" font-size="13.5">a question,</text>
+<text x="58" y="246" class="ink2" font-size="13.5">by voice</text>
+
+<rect class="chip" x="250" y="170" width="220" height="104" rx="12"/>
+<text x="268" y="204" class="ink" font-size="17" font-weight="700">Anam AI</text>
+<text x="268" y="228" class="ink2" font-size="13.5">live talking avatar</text>
+<text x="268" y="250" class="ink3 mono" font-size="12">Realtime 2 conversation</text>
+
+<rect class="hot" x="510" y="170" width="200" height="104" rx="12"/>
+<text x="528" y="204" class="ink" font-size="17" font-weight="700">Retrieve</text>
+<text x="528" y="228" class="ink2" font-size="13.5">find the passages</text>
+<text x="528" y="246" class="ink2" font-size="13.5">that match the question</text>
+
+<rect class="chip" x="750" y="170" width="190" height="104" rx="12"/>
+<text x="768" y="204" class="ink" font-size="17" font-weight="700">GPT Terra</text>
+<text x="768" y="228" class="ink2" font-size="13.5">writes the answer</text>
+<text x="768" y="246" class="ink2" font-size="13.5">from those passages</text>
+
+<rect class="chip" x="980" y="170" width="180" height="104" rx="12"/>
+<text x="998" y="204" class="ink" font-size="17" font-weight="700">ElevenLabs</text>
+<text x="998" y="228" class="ink2" font-size="13.5">turns the answer</text>
+<text x="998" y="246" class="ink2" font-size="13.5">into the voice</text>
+
+<path class="wire" d="M210 222 H246" marker-end="url(#ah)"/>
+<path class="wire-acc" d="M470 222 H506" marker-end="url(#aha)"/>
+<path class="wire-acc" d="M710 222 H746" marker-end="url(#aha)"/>
+<path class="wire" d="M940 222 H976" marker-end="url(#ah)"/>
+
+<rect class="chip" x="250" y="334" width="220" height="96" rx="12"/>
+<text x="268" y="364" class="ink" font-size="15" font-weight="700">Avatar face</text>
+<text x="268" y="388" class="ink2" font-size="13.5">designed in ChatGPT from</text>
+<text x="268" y="406" class="ink2" font-size="13.5">kira reference images</text>
+<path class="wire-dead" d="M360 334 V278" marker-end="url(#ahd)"/>
+<text x="370" y="312" class="ink3" font-size="12.5">one-time setup</text>
+
+<path class="hot" d="M510 334 a100 18 0 0 0 200 0 v80 a100 18 0 0 1 -200 0 z"/>
+<ellipse class="hot" cx="610" cy="334" rx="100" ry="18"/>
+<text x="610" y="378" class="ink" font-size="15" font-weight="700" text-anchor="middle">RAG knowledge base</text>
+<text x="610" y="398" class="ink2" font-size="13" text-anchor="middle">products, company info,</text>
+<text x="610" y="415" class="ink2" font-size="13" text-anchor="middle">daily batch records</text>
+<path class="wire-acc" d="M610 314 V278" marker-end="url(#aha)"/>
+
+<line class="axis" x1="40" y1="470" x2="1160" y2="470"/>
+<text x="40" y="506" class="ink2" font-size="15">All on free plans: 10,000 ElevenLabs credits and 30 minutes of live Anam AI interaction.</text>
+</svg>
