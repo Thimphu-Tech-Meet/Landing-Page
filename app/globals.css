@@ -1157,16 +1157,24 @@ footer.site .built a:hover { color: var(--accent); }
   .post .by { text-align: left; }
   .post .by b { display: inline; }
 
+  /* Tablet+: lead photo spans full content width, rest in a 2-up row.
+     Avoids the tall portrait mosaic that starved desktop sizing. */
   .gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 14px;
   }
-  .gallery .ph:only-child,
+  .gallery .ph:only-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
   .gallery .ph:first-child:nth-last-child(n + 3) {
     grid-column: 1 / -1;
     aspect-ratio: 16 / 10;
   }
-  .gallery .ph.is-video {
+  .gallery .ph:first-child:nth-last-child(n + 3) ~ .ph {
+    aspect-ratio: 3 / 2;
+  }
+  .gallery .ph:only-child.is-video {
     aspect-ratio: 16 / 9;
   }
 
@@ -1208,9 +1216,9 @@ footer.site .built a:hover { color: var(--accent); }
   }
 
   .event {
-    grid-template-columns: 180px minmax(0, 1fr);
-    gap: 32px;
-    padding: 36px 0;
+    grid-template-columns: 132px minmax(0, 1fr);
+    gap: 36px;
+    padding: 40px 0;
   }
   .event .when {
     position: sticky;
@@ -1227,31 +1235,19 @@ footer.site .built a:hover { color: var(--accent); }
   }
   .event .body { max-width: 60ch; }
 
-  /* Balanced mosaic: tall lead media + two side tiles, no fixed row px. */
-  .gallery:has(> .ph:nth-child(3)) {
-    grid-template-columns: 1.35fr minmax(0, 1fr);
-    grid-template-rows: repeat(2, minmax(150px, 1fr));
-    align-items: stretch;
+  /* Desktop: larger lead + roomier secondary tiles across the content column. */
+  .gallery {
+    gap: 16px;
   }
-  .gallery:has(> .ph:nth-child(3)) > .ph:first-child {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    aspect-ratio: auto;
-    height: 100%;
-    min-height: 280px;
+  .gallery .ph:only-child,
+  .gallery .ph:first-child:nth-last-child(n + 3) {
+    aspect-ratio: 2 / 1;
+    min-height: 320px;
   }
-  .gallery:has(> .ph:nth-child(3)) > .ph:not(:first-child) {
-    aspect-ratio: auto;
-    height: 100%;
-    min-height: 0;
-  }
-  .gallery:has(> .ph:nth-child(3)) > .ph.is-video {
-    aspect-ratio: auto;
-  }
-  .gallery:has(> .ph:nth-child(4)) > .ph:nth-child(n + 4) {
-    grid-column: 1 / -1;
-    aspect-ratio: 16 / 9;
-    height: auto;
+  /* Keep the 2-up row even and larger on desktop. */
+  .gallery .ph:first-child:nth-last-child(n + 3) ~ .ph {
+    aspect-ratio: 3 / 2;
+    min-height: 240px;
   }
 }
 
