@@ -89,7 +89,7 @@ export default function HomePage() {
                 {photoCount > 0 ? ` · ${photoCount} photos` : ""} →
               </Link>
             </div>
-            <div className="strip">
+            <div className="strip strip-lg">
               {past.slice(0, 4).map((m, i) => {
                 const { day, monthShort } = dateParts(m.frontmatter.date);
                 const when = m.frontmatter.dayUnknown
@@ -105,7 +105,7 @@ export default function HomePage() {
                       media={coverPhoto(m)}
                       index={i + 2}
                       label={`${when} · ${m.frontmatter.title}`}
-                      sizes="(max-width: 639px) 50vw, 25vw"
+                      sizes="(max-width: 639px) 100vw, (max-width: 899px) 50vw, 50vw"
                     />
                   </Link>
                 );
@@ -120,18 +120,36 @@ export default function HomePage() {
           <div className="wrap">
             <div className="section-head">
               <h2>People</h2>
+              <Link href="/contribute">Write with us →</Link>
             </div>
-            <ul className="people-list">
+            <ul className="people-grid">
               {people.map((person) => (
                 <li key={person.name}>
-                  <b>{person.name}</b>
-                  <p>{person.blurb}</p>
                   <a
+                    className="person-card"
                     href={person.href}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {person.linkLabel} ↗
+                    {person.avatar ? (
+                      <img
+                        className="person-avatar"
+                        src={person.avatar}
+                        alt=""
+                        width={56}
+                        height={56}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span className="person-avatar person-avatar-fallback" aria-hidden="true">
+                        {person.name.slice(0, 1)}
+                      </span>
+                    )}
+                    <span className="person-copy">
+                      <b>{person.name}</b>
+                      <span>{person.blurb}</span>
+                    </span>
                   </a>
                 </li>
               ))}
