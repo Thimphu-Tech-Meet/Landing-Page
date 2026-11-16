@@ -14,7 +14,8 @@ export interface Person {
 export const people: Person[] = [
   {
     name: "Kelden Dradul Dorji",
-    blurb: "Organises the Saturday meetups and maintains this site.",
+    blurb:
+      "Organises the Saturday meetups, maintains this site, and wrote about artificial life.",
     href: "https://github.com/compressionmonkey",
     avatar: "https://avatars.githubusercontent.com/u/17824272?v=4",
   },
