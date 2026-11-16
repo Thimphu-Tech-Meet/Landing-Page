@@ -42,15 +42,20 @@ const mono = IBM_Plex_Mono({
  */
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  // Keep the browser tab short so the brand stays readable when truncated.
   title: {
-    default: `${site.name} — People who build things, in the same room`,
-    template: `%s | ${site.name}`,
+    default: site.name,
+    template: `%s · ${site.name}`,
   },
   description:
     "A grassroots community of developers, researchers, and curious builders in Bhutan. We meet every Saturday in Thimphu to share projects, explore ideas, and learn together.",
+  applicationName: site.name,
   openGraph: {
     type: "website",
     siteName: site.name,
+    title: `${site.name} — People who build things, in the same room`,
+    description:
+      "A grassroots community of developers, researchers, and curious builders in Bhutan.",
   },
   alternates: {
     types: {
@@ -61,6 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: site.name,
+    description:
+      "A grassroots community of developers, researchers, and curious builders in Bhutan.",
   },
 };
 
