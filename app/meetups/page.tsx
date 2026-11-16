@@ -147,7 +147,7 @@ function MeetupEvent({ meetup }: { meetup: Meetup }) {
                 key={p.src}
                 media={p}
                 index={i}
-                sizes="(max-width: 820px) 100vw, 50vw"
+                sizes="(max-width: 639px) 100vw, (max-width: 899px) 100vw, 50vw"
               />
             ))
           )}
