@@ -172,18 +172,69 @@ export default function HomePage() {
         <div className="wrap">
           <div className="eyebrow">Connect</div>
           <h2>Outside Bhutan?</h2>
-          <p>
+          <p className="connect-lede">
             We welcome guest speakers, project feedback, and connections with
-            other technical communities.
+            other technical communities. Email us to join the chat and stay on
+            the loop of what&apos;s happening each week.
           </p>
           <div className="actions">
-            <a className="btn primary" href={`mailto:${site.email}`}>
-              Email {site.email}
+            <a
+              className="btn primary"
+              href={`mailto:${site.email}?subject=${encodeURIComponent("Join the chat")}`}
+            >
+              Email to join the chat
             </a>
-            <a className="btn" href="#next-meetup">
-              Join locally
+            <a className="btn" href={`mailto:${site.email}`}>
+              {site.email}
             </a>
           </div>
+
+          <ul className="connect-offers">
+            <li>
+              <h3>Give a remote talk</h3>
+              <p>Join a Saturday over video with a short demo or discussion.</p>
+              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Guest talk")}`}>
+                Propose a talk →
+              </a>
+            </li>
+            <li>
+              <h3>Get project feedback</h3>
+              <p>Show what you are building and get honest notes from the room.</p>
+              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Project feedback")}`}>
+                Ask for feedback →
+              </a>
+            </li>
+            <li>
+              <h3>Link communities</h3>
+              <p>Cross-post an event or run a joint session with your meetup.</p>
+              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Community partnership")}`}>
+                Start a conversation →
+              </a>
+            </li>
+          </ul>
+
+          <ul className="connect-channels" aria-label="Other ways to follow along">
+            <li>
+              <a href={site.luma} target="_blank" rel="noopener noreferrer">
+                Luma ↗
+              </a>
+              <span>Event calendar</span>
+            </li>
+            <li>
+              <a href={site.repo} target="_blank" rel="noopener noreferrer">
+                GitHub ↗
+              </a>
+              <span>Posts &amp; code</span>
+            </li>
+            <li>
+              <a href="/feed.xml">RSS</a>
+              <span>New writing</span>
+            </li>
+            <li>
+              <a href="#next-meetup">Join locally</a>
+              <span>Saturdays in Thimphu</span>
+            </li>
+          </ul>
         </div>
       </section>
     </>
