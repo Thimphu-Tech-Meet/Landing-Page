@@ -15,7 +15,7 @@ export const people: Person[] = [
   {
     name: "Kelden Dradul Dorji",
     blurb:
-      "Organises the Saturday meetups, maintains this site, and wrote about artificial life.",
+      "Organises the Saturday meetups, maintains this site, and led the artificial life session with live demos.",
     href: "https://github.com/compressionmonkey",
     avatar: "https://avatars.githubusercontent.com/u/17824272?v=4",
   },
