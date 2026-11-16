@@ -210,8 +210,8 @@ function NextMeetupCard({ meetup }: { meetup: Meetup | null }) {
         <div className="eyebrow">Next meetup</div>
         <h3>{weekly.day}</h3>
         <p>
-          No dated session is confirmed on the site yet. Usual time and place
-          below—email us to confirm, or walk in on Saturday.
+          If you want to join our chat, email us and we will add you in to stay
+          on the loop of what&apos;s happening every week.
         </p>
         <div className="when">
           <b>Time</b>
