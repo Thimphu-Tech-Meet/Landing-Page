@@ -169,32 +169,20 @@ export default function HomePage() {
       </section>
 
       <section id="connect" className="connect">
-        <div className="wrap connect-grid">
-          <div>
-            <div className="eyebrow">Connect</div>
-            <h2>Outside Bhutan?</h2>
-            <p>
-              We welcome guest speakers, project feedback, and connections with
-              other technical communities.
-            </p>
-            <div className="actions">
-              <a className="btn primary" href={`mailto:${site.email}`}>
-                Email {site.email}
-              </a>
-              <a className="btn" href="#next-meetup">
-                Join locally
-              </a>
-            </div>
-          </div>
-          <div className="note plain">
-            <h3>In Thimphu</h3>
-            <p>
-              Walk in on {weekly.day.toLowerCase()}, {weekly.time}, at the{" "}
-              <a href={weekly.map} target="_blank" rel="noopener noreferrer">
-                {weekly.place}
-              </a>
-              . No sign-up required.
-            </p>
+        <div className="wrap">
+          <div className="eyebrow">Connect</div>
+          <h2>Outside Bhutan?</h2>
+          <p>
+            We welcome guest speakers, project feedback, and connections with
+            other technical communities.
+          </p>
+          <div className="actions">
+            <a className="btn primary" href={`mailto:${site.email}`}>
+              Email {site.email}
+            </a>
+            <a className="btn" href="#next-meetup">
+              Join locally
+            </a>
           </div>
         </div>
       </section>
