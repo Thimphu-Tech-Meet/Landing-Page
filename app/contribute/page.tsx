@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,7 +26,12 @@ export default function ContributePage() {
         <h1 className="page-title">Write for the community</h1>
         <p className="page-intro">
           Posts are markdown files. You don&apos;t need to be a git expert;
-          three steps and a reviewer will help with the rest.
+          three steps and a reviewer will help with the rest. For a fuller
+          walkthrough, see{" "}
+          <Link href="/blog/welcome-to-the-community-blog">
+            Welcome to the community blog
+          </Link>
+          .
         </p>
 
         <div className="steps">
@@ -65,6 +71,14 @@ content/your-idea.md`}</pre>
             them to that week&apos;s meetup file.
           </p>
         </div>
+
+        <p className="page-intro" style={{ marginTop: 36, marginBottom: 0 }}>
+          Full guidelines, including images and ground rules, live in{" "}
+          <a href={site.contributing} target="_blank" rel="noopener noreferrer">
+            CONTRIBUTING.md
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

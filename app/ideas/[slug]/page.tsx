@@ -1,5 +1,5 @@
 import BlogPostPage, { generateMetadata as generateBlogMetadata } from "@/app/blog/[slug]/page";
-import { getIdeaPosts, getPostBySlug, isEventPost } from "@/lib/posts";
+import { getIdeaPosts, getPostBySlug, isEventPost, isMetaPost } from "@/lib/posts";
 import { notFound } from "next/navigation";
 
 interface IdeaPostPageProps {
@@ -10,6 +10,7 @@ interface IdeaPostPageProps {
  * Idea posts are displayed in the /ideas index, but the canonical post route
  * is /blog/[slug]. This alias keeps /ideas/[slug] shareable too, so someone
  * following the "ideas" mental model does not land on the custom 404 page.
+ * Meta posts (e.g. the welcome guide) stay on /blog only.
  */
 export function generateStaticParams(): { slug: string }[] {
   return getIdeaPosts().map((post) => ({ slug: post.slug }));
@@ -34,7 +35,7 @@ export default async function IdeaPostPage({ params }: IdeaPostPageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
-  if (!post || isEventPost(post)) notFound();
+  if (!post || isEventPost(post) || isMetaPost(post)) notFound();
 
   return <BlogPostPage params={Promise.resolve({ slug })} />;
 }
