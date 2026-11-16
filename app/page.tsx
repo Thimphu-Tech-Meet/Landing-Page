@@ -11,6 +11,23 @@ import { people } from "@/lib/people";
 
 const HERO_PHOTO_SIZES = "(max-width: 820px) calc(100vw - 40px), 420px";
 
+const TALK_MAILTO = `mailto:${site.email}?subject=${encodeURIComponent(
+  "Talk proposal"
+)}&body=${encodeURIComponent(
+  [
+    "Hi Thimphu Tech Meet,",
+    "",
+    "I'd like to present something at a Saturday session.",
+    "",
+    "Title:",
+    "What I'll show or discuss (2–3 sentences):",
+    "Preferred Saturday (or 'any week'):",
+    "Format: remote video / in person",
+    "",
+    "Thanks!",
+  ].join("\n")
+)}`;
+
 /**
  * Home restores the original hero + next-meetup card composition, with
  * work, recent meetups, people, writing, and connect layered below.
@@ -173,42 +190,64 @@ export default function HomePage() {
           <div className="eyebrow">Connect</div>
           <h2>Outside Bhutan?</h2>
           <p className="connect-lede">
-            We welcome guest speakers, project feedback, and connections with
-            other technical communities. Email us to join the chat and stay on
-            the loop of what&apos;s happening each week.
+            Two easy ways in: join the weekly chat, or bring something to share
+            with the room.
           </p>
-          <div className="actions">
+
+          <div className="connect-intents">
             <a
-              className="btn primary"
+              className="connect-intent"
               href={`mailto:${site.email}?subject=${encodeURIComponent("Join the chat")}`}
             >
-              Email to join the chat
+              <span className="eyebrow">Stay in the loop</span>
+              <h3>Join the chat</h3>
+              <p>
+                Email us and we&apos;ll add you, so you hear what&apos;s happening
+                each week.
+              </p>
+              <span className="connect-intent-cta">Email to join →</span>
             </a>
-            <a className="btn" href={`mailto:${site.email}`}>
-              {site.email}
+            <a
+              className="connect-intent connect-intent-primary"
+              href={TALK_MAILTO}
+            >
+              <span className="eyebrow">Share with the room</span>
+              <h3>Present a talk or idea</h3>
+              <p>
+                Casual Saturday slot, about 10–20 minutes over video. Opens your
+                email with a short template—title, what you&apos;ll show, and a
+                preferred date.
+              </p>
+              <span className="connect-intent-cta">Propose a talk →</span>
             </a>
           </div>
 
           <ul className="connect-offers">
             <li>
-              <h3>Give a remote talk</h3>
-              <p>Join a Saturday over video with a short demo or discussion.</p>
-              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Guest talk")}`}>
-                Propose a talk →
+              <a
+                className="connect-offer"
+                href={`mailto:${site.email}?subject=${encodeURIComponent("Project feedback")}`}
+              >
+                <h3>Get project feedback</h3>
+                <p>Show what you&apos;re building and get honest notes from the room.</p>
+                <span>Ask for feedback →</span>
               </a>
             </li>
             <li>
-              <h3>Get project feedback</h3>
-              <p>Show what you are building and get honest notes from the room.</p>
-              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Project feedback")}`}>
-                Ask for feedback →
+              <a className="connect-offer" href="/contribute">
+                <h3>Publish a write-up</h3>
+                <p>Turn an idea into a markdown post on the site via pull request.</p>
+                <span>Write on the blog →</span>
               </a>
             </li>
             <li>
-              <h3>Link communities</h3>
-              <p>Cross-post an event or run a joint session with your meetup.</p>
-              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Community partnership")}`}>
-                Start a conversation →
+              <a
+                className="connect-offer"
+                href={`mailto:${site.email}?subject=${encodeURIComponent("Community partnership")}`}
+              >
+                <h3>Link communities</h3>
+                <p>Cross-post an event or run a joint session with your meetup.</p>
+                <span>Start a conversation →</span>
               </a>
             </li>
           </ul>

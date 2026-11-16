@@ -400,11 +400,52 @@ section + section { border-top: 1px solid var(--line-2); }
 }
 .connect-lede {
   color: var(--ink-2);
-  max-width: 52ch;
-  margin: 0 0 22px;
+  max-width: 44ch;
+  margin: 0 0 24px;
   font-size: clamp(17px, 3.5vw, 19px);
 }
-.connect .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+
+.connect-intents {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.connect-intent {
+  display: grid;
+  gap: 8px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: border-color 0.12s ease, transform 0.12s ease;
+}
+.connect-intent:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  transform: translateY(-1px);
+}
+.connect-intent-primary {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+}
+.connect-intent h3 {
+  font-size: clamp(22px, 3vw, 26px);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.connect-intent p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 16px;
+  max-width: 42ch;
+}
+.connect-intent-cta {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--accent);
+  margin-top: 4px;
+}
 
 .connect-offers {
   list-style: none;
@@ -414,29 +455,36 @@ section + section { border-top: 1px solid var(--line-2); }
   grid-template-columns: 1fr;
   gap: 12px;
 }
-.connect-offers li {
+.connect-offers li { min-width: 0; }
+.connect-offer {
   display: grid;
   gap: 8px;
+  height: 100%;
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--surface);
+  transition: border-color 0.12s ease;
 }
-.connect-offers h3 {
+.connect-offer:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+}
+.connect-offer h3 {
   font-size: 18px;
   margin: 0;
   letter-spacing: -0.015em;
 }
-.connect-offers p {
+.connect-offer p {
   margin: 0;
   font-size: 16px;
   color: var(--ink-2);
 }
-.connect-offers a {
+.connect-offer span {
   color: var(--accent);
   font-family: var(--display);
   font-weight: 600;
   font-size: 15px;
+  margin-top: auto;
 }
 
 .connect-channels {
@@ -1237,6 +1285,7 @@ footer.site .built a:hover { color: var(--accent); }
   .people-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .strip { gap: 16px; }
   .strip-lg .ph { aspect-ratio: 16 / 10; min-height: 240px; }
+  .connect-intents { grid-template-columns: 1fr 1.15fr; gap: 16px; align-items: stretch; }
   .connect-offers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .connect-channels { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
