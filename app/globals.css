@@ -274,65 +274,37 @@ section + section { border-top: 1px solid var(--line-2); }
   max-width: 18ch;
 }
 .hero h1 em { font-style: normal; color: var(--accent); }
-.hero p.lede { font-size: clamp(18px, 4vw, 21px); color: var(--ink-2); max-width: 48ch; margin: 18px 0 24px; }
+.hero p.lede {
+  font-size: clamp(18px, 4vw, 21px);
+  color: var(--ink-2);
+  max-width: 36ch;
+  margin: 18px 0 24px;
+}
 .hero p.lede a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.next .when a,
-.next-details .when a { color: var(--accent); }
-.next .when a:hover,
-.next-details .when a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.next .when a { color: var(--accent); }
+.next .when a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero .next { scroll-margin-top: 72px; }
 
-#next-meetup,
 #work,
 #recent-meetups,
 #people,
 #writing,
 #connect { scroll-margin-top: 72px; }
 
-.next-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  align-items: start;
-}
-.next-details h3 { font-size: clamp(22px, 4vw, 28px); margin: 0 0 12px; letter-spacing: -0.02em; }
-.next-details > p { color: var(--ink-2); max-width: 52ch; margin: 0 0 18px; }
-.next-details .when {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--ink-2);
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4px 14px;
-  margin: 0 0 18px;
-  font-variant-numeric: tabular-nums;
-}
-.next-details .when b { font-weight: 500; color: var(--ink-3); }
-.next-details .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-.next-section .next {
-  padding: 0;
-  overflow: hidden;
-}
-.next-section .next .venue-photo {
-  margin: 0;
-  border-radius: 14px;
-  border-bottom: none;
-  aspect-ratio: 16 / 10;
-}
-
 .work-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 0;
+  border-top: 1px solid var(--line);
 }
 .work-card {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--surface);
+  gap: 8px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
 }
 .work-card h3 {
   font-size: 22px;
@@ -340,7 +312,7 @@ section + section { border-top: 1px solid var(--line-2); }
   line-height: 1.25;
 }
 .work-card h3 a:hover { color: var(--accent); }
-.work-card p { margin: 0; color: var(--ink-2); font-size: 16px; flex: 1; }
+.work-card p { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 52ch; }
 .work-meta {
   display: flex;
   flex-wrap: wrap;
@@ -353,27 +325,6 @@ section + section { border-top: 1px solid var(--line-2); }
   font-size: 15px;
   color: var(--accent);
   margin-top: 4px;
-}
-
-.meetup-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-.meetup-card {
-  display: block;
-}
-.meetup-card .ph { margin-bottom: 14px; }
-.meetup-card h3 {
-  font-size: 20px;
-  letter-spacing: -0.015em;
-  margin: 0 0 6px;
-}
-.meetup-card:hover h3 { color: var(--accent); }
-.meetup-card p {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: 16px;
 }
 
 .people-list {
@@ -444,7 +395,7 @@ section + section { border-top: 1px solid var(--line-2); }
   box-shadow: var(--shadow);
 }
 .next .venue-photo {
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 16 / 10;
   margin: -22px -22px 20px;
   border-radius: 14px 14px 0 0;
   border-bottom: 1px solid var(--line);
@@ -1143,9 +1094,12 @@ footer.site .built a:hover { color: var(--accent); }
   }
 
   .doors { grid-template-columns: 1fr 1fr; gap: 20px; }
-  .work-grid,
-  .meetup-cards,
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
   .people-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .next .venue-photo { aspect-ratio: 5 / 4; }
   .strip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .split { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1187,12 +1141,19 @@ footer.site .built a:hover { color: var(--accent); }
   section { padding-block: 56px; }
   .hero { padding-block: 64px 48px; }
   .hero .grid { grid-template-columns: 1.3fr 0.9fr; gap: 48px; }
-  .next-layout { grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
-  .next-section .next .venue-photo { aspect-ratio: 5 / 4; }
   .next .venue-photo { aspect-ratio: 5 / 4; }
 
-  .work-grid,
-  .meetup-cards,
+  .work-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 28px;
+    border-top: none;
+  }
+  .work-card {
+    padding: 0;
+    border-bottom: none;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
   .people-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
   .connect-grid { grid-template-columns: 1.4fr 0.8fr; gap: 32px; }
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
