@@ -138,10 +138,20 @@ export function getAllPosts(): Post[] {
  */
 export const EVENT_TAG = "Event";
 
+/**
+ * Meta posts about how the site works. Kept at their /blog/<slug> URLs and
+ * linked from About / Contribute, but excluded from Ideas and homepage lists.
+ */
+export const META_POST_SLUGS = new Set(["welcome-to-the-community-blog"]);
+
 export function isEventPost(post: Post): boolean {
   return (post.frontmatter.tags ?? []).some(
     (tag) => tag.toLowerCase() === EVENT_TAG.toLowerCase()
   );
+}
+
+export function isMetaPost(post: Post): boolean {
+  return META_POST_SLUGS.has(post.slug);
 }
 
 /** Event write-ups, newest first. */
@@ -149,7 +159,7 @@ export function getEventPosts(): Post[] {
   return getAllPosts().filter(isEventPost);
 }
 
-/** Everything that is not an event write-up, newest first. */
+/** Ideas and explorations only — not event write-ups or site meta posts. */
 export function getIdeaPosts(): Post[] {
-  return getAllPosts().filter((post) => !isEventPost(post));
+  return getAllPosts().filter((post) => !isEventPost(post) && !isMetaPost(post));
 }

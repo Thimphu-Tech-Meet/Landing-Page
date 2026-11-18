@@ -2,7 +2,7 @@
 export const site = {
   name: "Thimphu Tech Meet",
   short: "TTM",
-  url: "https://thimphu-tech-meet.github.io",
+  url: "https://www.thimphutechmeet.com",
   repo: "https://github.com/Thimphu-Tech-Meet/Landing-Page",
   contributing:
     "https://github.com/Thimphu-Tech-Meet/Landing-Page/blob/main/CONTRIBUTING.md",

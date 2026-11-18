@@ -38,7 +38,7 @@ export function PhotoTile({ media, label, index = 0, className = "", sizes }: Ph
           src={media.src}
           alt={media.alt ?? text ?? ""}
           fill
-          sizes={sizes ?? "(max-width: 820px) 50vw, 25vw"}
+          sizes={sizes ?? "(max-width: 639px) 100vw, (max-width: 899px) 50vw, 33vw"}
         />
       )}
       {media?.kind === "video" && (

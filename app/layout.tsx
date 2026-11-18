@@ -42,18 +42,33 @@ const mono = IBM_Plex_Mono({
  */
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  // Keep the browser tab short so the brand stays readable when truncated.
   title: {
-    default: `${site.name} — People who build things, in the same room`,
-    template: `%s | ${site.name}`,
+    default: site.name,
+    template: `%s · ${site.name}`,
   },
   description:
-    "A casual weekly meetup for developers, researchers and tinkerers in Bhutan. Every Saturday, 12 to 2 PM, at the Loden Office Top Floor Meeting Room in Thimphu. Ideas are written as markdown and reviewed in the open.",
+    "A grassroots community of developers, researchers, and curious builders in Bhutan. We meet every Saturday in Thimphu to share projects, explore ideas, and learn together.",
+  applicationName: site.name,
   openGraph: {
     type: "website",
     siteName: site.name,
+    title: `${site.name} — People who build things, in the same room`,
+    description:
+      "A grassroots community of developers, researchers, and curious builders in Bhutan.",
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": [
+        { url: "/feed.xml", title: `${site.name} — ideas & notes (RSS)` },
+      ],
+    },
   },
   twitter: {
     card: "summary_large_image",
+    title: site.name,
+    description:
+      "A grassroots community of developers, researchers, and curious builders in Bhutan.",
   },
 };
 

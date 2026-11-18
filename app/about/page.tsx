@@ -7,7 +7,7 @@ import { site, weekly } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "What Thimphu Tech Meet is: casual Saturday meetups in Thimphu on AI, artificial life and autonomous agents, and an open, attributed knowledge base built by pull request.",
+    "What Thimphu Tech Meet is: a grassroots Saturday community in Thimphu for developers, researchers and curious builders, with an open, attributed knowledge base.",
   alternates: { canonical: "/about" },
 };
 
@@ -21,27 +21,32 @@ export default function AboutPage() {
         <div className="eyebrow">About</div>
         <h1 className="page-title">A room for people who build things</h1>
         <p className="page-intro">
-          Thimphu Tech Meet is a casual, open meetup for developers,
-          researchers and tinkerers in Bhutan. The first session was in
-          December 2025 and we have met most Saturdays since early 2026.
+          Thimphu Tech Meet is a grassroots community in Bhutan—not a company,
+          formal research institute, or established lab. Developers, researchers,
+          and curious builders meet most Saturdays to share projects, explore
+          ideas, and learn together. The first session was in December 2025.
         </p>
 
         <div className="steps">
           <div className="step">
             <h3>What we talk about</h3>
             <p>
-              Mostly AI: artificial life, emergence, particle attraction
-              matrices, autonomous agents and the tooling around them. Some
-              weeks someone gives a talk; most weeks it is a conversation
-              around one laptop.
+              Software engineering, tools, AI, artificial life, autonomous
+              agents, and whatever someone brings that week. Some Saturdays
+              there is a short talk; most weeks it is a conversation around one
+              laptop.
             </p>
           </div>
           <div className="step">
             <h3>An open, attributed knowledge base</h3>
             <p>
-              Members publish their ideas as markdown posts on this site with
-              their name attached, so anyone who builds on an idea can cite
-              the person it came from. Every post is reviewed in the open.
+              Members publish ideas as markdown posts on this site with their
+              name attached, so anyone who builds on an idea can cite the person
+              it came from. Every post is reviewed in the open. See{" "}
+              <Link href="/blog/welcome-to-the-community-blog">
+                how the community blog works
+              </Link>
+              .
             </p>
           </div>
           <div className="step">
