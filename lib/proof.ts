@@ -17,6 +17,15 @@ export interface ProofPhoto {
   portrait?: boolean;
 }
 
+export interface ProofCoverage {
+  /** Short pull from the external post, shown as a preview. */
+  excerpt: string;
+  /** Optional cover image under /public (e.g. the LinkedIn share photo). */
+  image?: string;
+  /** Image alt text. */
+  imageAlt?: string;
+}
+
 export interface ProofItem {
   name: string;
   /** Role of this mention: we showed up, or someone wrote about us. */
@@ -31,30 +40,39 @@ export interface ProofItem {
   links?: ProofLink[];
   /** Optional photo strip (e.g. booth shots from the summit). */
   photos?: ProofPhoto[];
+  /** Optional “what they wrote” preview for coverage items. */
+  coverage?: ProofCoverage;
 }
 
 const PROOF_DIR = path.join(process.cwd(), "public", "proof");
 
 /**
- * Picks up public/proof/avs-proof-<n>.{jpg,jpeg,png,webp} in numeric order.
- * Portrait lead (avs-proof-1) is marked so the mosaic can give it height.
+ * Picks up public/proof/avs-proof-<n>.{webp,jpg,jpeg,png} in numeric order.
+ * Prefers .webp when both exist. Portrait lead (n===1) gets height in the grid.
  */
 function loadAvsProofPhotos(): ProofPhoto[] {
   if (!fs.existsSync(PROOF_DIR)) return [];
 
-  return fs
-    .readdirSync(PROOF_DIR)
-    .map((name) => {
-      const match = /^avs-proof-(\d+)\.(jpe?g|png|webp)$/i.exec(name);
-      if (!match) return null;
-      return { name, n: Number(match[1]) };
-    })
-    .filter((x): x is { name: string; n: number } => x !== null)
-    .sort((a, b) => a.n - b.n)
-    .map(({ name, n }) => ({
+  const byNumber = new Map<number, string>();
+  const rank = (ext: string) =>
+    ({ webp: 0, jpg: 1, jpeg: 1, png: 2 }[ext.toLowerCase()] ?? 9);
+
+  for (const name of fs.readdirSync(PROOF_DIR)) {
+    const match = /^avs-proof-(\d+)\.(webp|jpe?g|png)$/i.exec(name);
+    if (!match) continue;
+    const n = Number(match[1]);
+    const ext = match[2];
+    const prev = byNumber.get(n);
+    if (!prev || rank(ext) < rank(path.extname(prev).slice(1))) {
+      byNumber.set(n, name);
+    }
+  }
+
+  return [...byNumber.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .map(([n, name]) => ({
       src: `/proof/${name}`,
       alt: `Builders presenting at Asia Visionary Summit — photo ${n}`,
-      // Known lead shot from the set; others are landscape booth frames.
       portrait: n === 1,
     }));
 }
@@ -78,6 +96,13 @@ export const socialProof: ProofItem[] = [
       "Wrote about our builders at the summit, naming the demos on the floor and inviting people to the booths.",
     logo: "/proof/dabtong-logo.svg",
     href: "https://dabtonghouse.org/",
+    coverage: {
+      excerpt:
+        "We came to Paro for AVS, and are proud to see our builders here. Kelden Dorji’s start-up, Thagzo AI, is demonstrating a platform which documents and identifies inefficiencies in communication between collaborating AI agents. Jaggle AI is demonstrating Jaggle Pods — proactive AI companions for entire teams.",
+      image: "/proof/dabtong-coverage.webp",
+      imageAlt:
+        "Thagzo AI booth banner at Asia Visionary Summit, with Kelden in a gho beside it",
+    },
     links: [
       {
         label: "LinkedIn",

@@ -31,87 +31,129 @@ function ProofRow({ item }: { item: ProofItem }) {
   const isMark = Boolean(item.logo?.includes("mark"));
   const logoClass = isMark ? "proof-logo" : "proof-logo proof-logo-ink";
   const photos = item.photos ?? [];
-  const hasPhotos = photos.length > 0;
+  const primaryHref = item.links?.[0]?.href ?? item.href;
 
   return (
-    <article className={hasPhotos ? "proof-item has-photos" : "proof-item"}>
-      <a
-        className="proof-brand"
-        href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={item.name}
-      >
-        {item.logo && (
-          // SVGs are static brand marks; plain <img> avoids next/image SVG limits.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            className={logoClass}
-            src={item.logo}
-            alt=""
-            width={isMark ? 40 : 140}
-            height={40}
-          />
-        )}
-        {/* Wordmarks already spell the name; marks need a label beside them. */}
-        {(isMark || !item.logo) && <span className="proof-name">{item.name}</span>}
-      </a>
-      <div className="proof-body">
+    <article className="proof-item">
+      <header className="proof-header">
+        <a
+          className="proof-brand"
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={item.name}
+        >
+          {item.logo && (
+            // SVGs are static brand marks; plain <img> avoids next/image SVG limits.
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              className={logoClass}
+              src={item.logo}
+              alt=""
+              width={isMark ? 36 : 132}
+              height={36}
+            />
+          )}
+          {(isMark || !item.logo) && (
+            <span className="proof-name">{item.name}</span>
+          )}
+        </a>
         <div className="proof-meta">
           <span className="eyebrow">{item.kind}</span>
           <span className="mono plain">{item.when}</span>
         </div>
-        <p>{item.blurb}</p>
-        {item.links && item.links.length > 0 ? (
-          <div className="proof-links">
-            {item.links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label} ↗
-              </a>
-            ))}
-          </div>
-        ) : (
-          <a
-            className="proof-more"
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit site ↗
-          </a>
-        )}
-      </div>
+      </header>
 
-      {hasPhotos && (
+      <p className="proof-blurb">{item.blurb}</p>
+
+      {photos.length > 0 && (
         <div className="proof-gallery" role="list" aria-label={`${item.name} photos`}>
           {photos.map((photo, i) => (
             <div
               key={photo.src}
               role="listitem"
-              className={
-                photo.portrait
-                  ? "ph has-img proof-shot is-portrait"
-                  : "ph has-img proof-shot"
-              }
+              className={[
+                "ph",
+                "has-img",
+                "proof-shot",
+                photo.portrait ? "is-portrait" : "",
+                i === 0 ? "is-lead" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
                 sizes={
-                  photo.portrait
-                    ? "(max-width: 639px) 70vw, (max-width: 899px) 40vw, 28vw"
-                    : "(max-width: 639px) 78vw, (max-width: 899px) 45vw, 30vw"
+                  i === 0
+                    ? "(max-width: 639px) 100vw, (max-width: 899px) 50vw, 34vw"
+                    : "(max-width: 639px) 50vw, (max-width: 899px) 33vw, 25vw"
                 }
-                priority={i === 0}
+                priority={i < 2}
               />
               {i === 0 && <span>AVS · Paro</span>}
             </div>
+          ))}
+        </div>
+      )}
+
+      {item.coverage && (
+        <a
+          className="proof-coverage"
+          href={primaryHref}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {item.coverage.image && (
+            <div className="proof-coverage-media">
+              <Image
+                src={item.coverage.image}
+                alt={item.coverage.imageAlt ?? ""}
+                fill
+                sizes="(max-width: 639px) 100vw, 280px"
+              />
+            </div>
+          )}
+          <div className="proof-coverage-copy">
+            <div className="mono">From their post</div>
+            <blockquote>
+              <p>{item.coverage.excerpt}</p>
+            </blockquote>
+            {item.links && item.links.length > 0 && (
+              <div className="proof-coverage-channels" aria-hidden="true">
+                {item.links.map((link) => (
+                  <span key={link.href}>{link.label}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </a>
+      )}
+
+      {!item.coverage && (
+        <a
+          className="proof-more"
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit site ↗
+        </a>
+      )}
+
+      {item.coverage && item.links && item.links.length > 1 && (
+        <div className="proof-links">
+          {item.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label} ↗
+            </a>
           ))}
         </div>
       )}
