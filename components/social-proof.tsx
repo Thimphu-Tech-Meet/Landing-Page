@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { socialProof, type ProofItem } from "@/lib/proof";
 
 /** Quiet “elsewhere” strip: venues we presented at, and coverage that named us. */
@@ -29,9 +30,11 @@ export function SocialProof() {
 function ProofRow({ item }: { item: ProofItem }) {
   const isMark = Boolean(item.logo?.includes("mark"));
   const logoClass = isMark ? "proof-logo" : "proof-logo proof-logo-ink";
+  const photos = item.photos ?? [];
+  const hasPhotos = photos.length > 0;
 
   return (
-    <article className="proof-item">
+    <article className={hasPhotos ? "proof-item has-photos" : "proof-item"}>
       <a
         className="proof-brand"
         href={item.href}
@@ -83,6 +86,35 @@ function ProofRow({ item }: { item: ProofItem }) {
           </a>
         )}
       </div>
+
+      {hasPhotos && (
+        <div className="proof-gallery" role="list" aria-label={`${item.name} photos`}>
+          {photos.map((photo, i) => (
+            <div
+              key={photo.src}
+              role="listitem"
+              className={
+                photo.portrait
+                  ? "ph has-img proof-shot is-portrait"
+                  : "ph has-img proof-shot"
+              }
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes={
+                  photo.portrait
+                    ? "(max-width: 639px) 70vw, (max-width: 899px) 40vw, 28vw"
+                    : "(max-width: 639px) 78vw, (max-width: 899px) 45vw, 30vw"
+                }
+                priority={i === 0}
+              />
+              {i === 0 && <span>AVS · Paro</span>}
+            </div>
+          ))}
+        </div>
+      )}
     </article>
   );
 }
