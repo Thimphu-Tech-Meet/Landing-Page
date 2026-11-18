@@ -290,6 +290,7 @@ section + section { border-top: 1px solid var(--line-2); }
 #recent-meetups,
 #people,
 #writing,
+#elsewhere,
 #connect { scroll-margin-top: 72px; }
 
 .work-grid {
@@ -510,6 +511,249 @@ section + section { border-top: 1px solid var(--line-2); }
 .connect-channels span {
   font-size: 13px;
   color: var(--ink-3);
+}
+
+/* ------------------------------------------------------------------ */
+/* Elsewhere / social proof                                           */
+/* ------------------------------------------------------------------ */
+.proof-intro {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 22px 18px 24px;
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--accent-soft) 72%, var(--surface)) 0%,
+      var(--surface) 58%,
+      color-mix(in srgb, var(--gold) 10%, var(--surface)) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
+  overflow: hidden;
+}
+.proof-intro::after {
+  content: "";
+  position: absolute;
+  right: -12%;
+  top: -40%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--gold) 28%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.proof-intro .eyebrow { position: relative; z-index: 1; }
+.proof-intro h2 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(28px, 7vw, 40px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0;
+  max-width: 14ch;
+}
+.proof-intro h2 em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent);
+}
+.proof-lede {
+  position: relative;
+  z-index: 1;
+  color: var(--ink-2);
+  max-width: 42ch;
+  margin: 0;
+  font-size: clamp(16px, 3.8vw, 19px);
+  line-height: 1.5;
+}
+.proof-legend {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 16%, var(--line));
+  display: grid;
+  gap: 10px;
+}
+.proof-legend li {
+  display: grid;
+  gap: 2px;
+}
+.proof-legend li > span:last-child {
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.proof-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.proof-item {
+  display: grid;
+  gap: 14px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.proof-header {
+  display: grid;
+  gap: 8px;
+}
+.proof-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.proof-logo {
+  width: auto;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.proof-logo-ink {
+  height: 24px;
+  max-width: 140px;
+  opacity: 0.88;
+}
+.proof-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(18px, 4.5vw, 22px);
+  letter-spacing: -0.02em;
+}
+.proof-brand:hover .proof-name { color: var(--accent); }
+.proof-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.proof-blurb {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: clamp(15px, 3.6vw, 17px);
+  max-width: 54ch;
+  line-height: 1.55;
+}
+.proof-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+.proof-links a,
+.proof-more {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--accent);
+}
+.proof-links a:hover,
+.proof-more:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/*
+ * Mobile-first gallery: lead shot full-bleed, then a calm 2-up.
+ * Wider breakpoints step to 3-up without changing reading order.
+ */
+.proof-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+.proof-gallery .proof-shot {
+  aspect-ratio: 4 / 3;
+  min-width: 0;
+}
+.proof-gallery .proof-shot.is-lead {
+  grid-column: 1 / -1;
+  aspect-ratio: 3 / 4;
+  max-height: min(68vw, 420px);
+}
+.proof-gallery .proof-shot.is-lead.is-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+/* Coverage preview — reads like their post, not a logo row. */
+.proof-coverage {
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: border-color 0.12s ease, transform 0.12s ease;
+}
+.proof-coverage:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  transform: translateY(-1px);
+}
+.proof-coverage-media {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  max-height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--photo-a);
+}
+.proof-coverage-media img {
+  object-fit: cover;
+}
+.proof-coverage-copy {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.proof-coverage-copy .mono {
+  color: var(--ink-3);
+}
+.proof-coverage blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.proof-coverage blockquote p {
+  margin: 0;
+  font-size: clamp(15px, 3.6vw, 17px);
+  line-height: 1.55;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.proof-coverage-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 2px;
+}
+.proof-coverage-channels span {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .proof-logo-ink {
+    filter: invert(1);
+    opacity: 0.92;
+  }
+}
+:root[data-theme="dark"] .proof-logo-ink {
+  filter: invert(1);
+  opacity: 0.92;
 }
 
 .next {
@@ -1263,6 +1507,35 @@ footer.site .built a:hover { color: var(--accent); }
   .event .when .stats { width: auto; margin-left: auto; }
   .venue-info { padding: 26px; }
   .door .art { width: 130px; height: 130px; }
+
+  .proof-intro {
+    padding: 26px 28px 28px;
+  }
+  .proof-legend {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 28px;
+  }
+  .proof-header {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 14px;
+  }
+  .proof-gallery .proof-shot.is-lead {
+    max-height: 480px;
+  }
+  .proof-coverage {
+    grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+    gap: 16px;
+    align-items: stretch;
+  }
+  .proof-coverage-media {
+    max-height: none;
+    height: 100%;
+    min-height: 200px;
+  }
+  .proof-coverage blockquote p {
+    -webkit-line-clamp: 8;
+  }
 }
 
 @media (min-width: 900px) {
@@ -1288,6 +1561,39 @@ footer.site .built a:hover { color: var(--accent); }
   .connect-intents { grid-template-columns: 1fr 1.15fr; gap: 16px; align-items: stretch; }
   .connect-offers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .connect-channels { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .proof-item {
+    gap: 16px;
+    padding: 32px 0;
+  }
+  .proof-header {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+  }
+  .proof-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .proof-gallery .proof-shot.is-lead {
+    grid-column: 1;
+    grid-row: span 2;
+    aspect-ratio: 3 / 4;
+    max-height: none;
+  }
+  .proof-coverage {
+    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    padding: 16px;
+  }
+  .proof-coverage-media {
+    max-height: none;
+    height: 100%;
+    min-height: 220px;
+  }
+  .proof-coverage blockquote p {
+    -webkit-line-clamp: 7;
+  }
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
   .split { gap: 32px; margin-top: 40px; }
 
