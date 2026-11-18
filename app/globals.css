@@ -516,15 +516,84 @@ section + section { border-top: 1px solid var(--line-2); }
 /* ------------------------------------------------------------------ */
 /* Elsewhere / social proof                                           */
 /* ------------------------------------------------------------------ */
+.proof-intro {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 22px 18px 24px;
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--accent-soft) 72%, var(--surface)) 0%,
+      var(--surface) 58%,
+      color-mix(in srgb, var(--gold) 10%, var(--surface)) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
+  overflow: hidden;
+}
+.proof-intro::after {
+  content: "";
+  position: absolute;
+  right: -12%;
+  top: -40%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--gold) 28%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.proof-intro .eyebrow { position: relative; z-index: 1; }
+.proof-intro h2 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(28px, 7vw, 40px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0;
+  max-width: 14ch;
+}
+.proof-intro h2 em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent);
+}
 .proof-lede {
+  position: relative;
+  z-index: 1;
   color: var(--ink-2);
-  max-width: 48ch;
-  margin: -8px 0 20px;
+  max-width: 42ch;
+  margin: 0;
   font-size: clamp(16px, 3.8vw, 19px);
+  line-height: 1.5;
+}
+.proof-legend {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 16%, var(--line));
+  display: grid;
+  gap: 10px;
+}
+.proof-legend li {
+  display: grid;
+  gap: 2px;
+}
+.proof-legend li > span:last-child {
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.4;
 }
 .proof-list {
   list-style: none;
-  margin: 0;
+  margin: 18px 0 0;
   padding: 0;
   display: grid;
   gap: 0;
@@ -1439,6 +1508,13 @@ footer.site .built a:hover { color: var(--accent); }
   .venue-info { padding: 26px; }
   .door .art { width: 130px; height: 130px; }
 
+  .proof-intro {
+    padding: 26px 28px 28px;
+  }
+  .proof-legend {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 28px;
+  }
   .proof-header {
     grid-template-columns: 1fr auto;
     align-items: center;

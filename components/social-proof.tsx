@@ -8,13 +8,26 @@ export function SocialProof() {
   return (
     <section id="elsewhere" className="proof">
       <div className="wrap">
-        <div className="section-head">
-          <h2>Elsewhere</h2>
-        </div>
-        <p className="proof-lede">
-          Moments outside the Saturday room — presentations and write-ups that
-          put the community on a wider map.
-        </p>
+        <header className="proof-intro">
+          <div className="eyebrow">Beyond Saturday</div>
+          <h2>
+            Elsewhere we <em>showed up</em>
+          </h2>
+          <p className="proof-lede">
+            Not every week stays in the room. These are the stages we presented
+            on — and the posts that noticed us.
+          </p>
+          <ul className="proof-legend" aria-label="How to read this section">
+            <li>
+              <span className="eyebrow">Presented</span>
+              <span>Where we stood and showed the work</span>
+            </li>
+            <li>
+              <span className="eyebrow">Coverage</span>
+              <span>Where someone else wrote about us</span>
+            </li>
+          </ul>
+        </header>
         <ul className="proof-list">
           {socialProof.map((item) => (
             <li key={item.name}>
