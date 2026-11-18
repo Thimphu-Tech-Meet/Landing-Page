@@ -6,6 +6,7 @@ import { PostList } from "@/components/post-list";
 import { PhotoTile } from "@/components/photo-tile";
 import { site, weekly } from "@/lib/site";
 import { VenuePhoto } from "@/components/venue";
+import { SocialProof } from "@/components/social-proof";
 import { featuredWork } from "@/lib/projects";
 import { people } from "@/lib/people";
 
@@ -184,6 +185,8 @@ export default function HomePage() {
           <PostList posts={posts.slice(0, 3)} />
         </div>
       </section>
+
+      <SocialProof />
 
       <section id="connect" className="connect">
         <div className="wrap">

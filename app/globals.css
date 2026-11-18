@@ -290,6 +290,7 @@ section + section { border-top: 1px solid var(--line-2); }
 #recent-meetups,
 #people,
 #writing,
+#elsewhere,
 #connect { scroll-margin-top: 72px; }
 
 .work-grid {
@@ -510,6 +511,93 @@ section + section { border-top: 1px solid var(--line-2); }
 .connect-channels span {
   font-size: 13px;
   color: var(--ink-3);
+}
+
+/* ------------------------------------------------------------------ */
+/* Elsewhere / social proof                                           */
+/* ------------------------------------------------------------------ */
+.proof-lede {
+  color: var(--ink-2);
+  max-width: 48ch;
+  margin: -12px 0 28px;
+  font-size: clamp(17px, 3.5vw, 19px);
+}
+.proof-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.proof-item {
+  display: grid;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.proof-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.proof-logo {
+  width: auto;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.proof-logo-ink {
+  height: 28px;
+  max-width: 150px;
+  opacity: 0.88;
+}
+.proof-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.proof-brand:hover .proof-name { color: var(--accent); }
+.proof-body { display: grid; gap: 8px; min-width: 0; }
+.proof-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.proof-body p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 16px;
+  max-width: 54ch;
+}
+.proof-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 4px;
+}
+.proof-links a,
+.proof-more {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--accent);
+}
+.proof-links a:hover,
+.proof-more:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .proof-logo-ink {
+    filter: invert(1);
+    opacity: 0.92;
+  }
+}
+:root[data-theme="dark"] .proof-logo-ink {
+  filter: invert(1);
+  opacity: 0.92;
 }
 
 .next {
@@ -1288,6 +1376,12 @@ footer.site .built a:hover { color: var(--accent); }
   .connect-intents { grid-template-columns: 1fr 1.15fr; gap: 16px; align-items: stretch; }
   .connect-offers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .connect-channels { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .proof-item {
+    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+    padding: 28px 0;
+  }
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
   .split { gap: 32px; margin-top: 40px; }
 
