@@ -1,0 +1,44 @@
+name: PR Approval Bot
+
+# Reviews new / updated PRs with OpenRouter and posts a GitHub review.
+# Optional auto-approve when APPROVAL_BOT_MODE=approve and APPROVAL_BOT_TOKEN is set.
+#
+# Required secret: OPENROUTER_API_KEY
+# Optional secret: APPROVAL_BOT_TOKEN  (PAT with pull-requests:write — needed to approve)
+# Optional variable: APPROVAL_BOT_MODE = review | approve  (default: review)
+# Optional variable: APPROVAL_BOT_MODEL = openrouter model id (default: openai/gpt-4o-mini)
+#
+# Also enable: Settings → Actions → General → Workflow permissions →
+# "Allow GitHub Actions to create and approve pull requests"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run approval bot
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          APPROVAL_BOT_TOKEN: ${{ secrets.APPROVAL_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          APPROVAL_BOT_MODE: ${{ vars.APPROVAL_BOT_MODE || 'review' }}
+          APPROVAL_BOT_MODEL: ${{ vars.APPROVAL_BOT_MODEL || 'openai/gpt-4o-mini' }}
+        run: node .github/approval-bot/review.mjs
